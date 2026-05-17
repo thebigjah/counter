@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Counter — apologetics practice for Christians who actually want to be ready</title>
+<meta name="description" content="For each common objection to Christian faith, see the strongest version, write your response, then compare to how Lewis, Craig, McDowell, and others answered.">
+<meta property="og:title" content="Counter — apologetics practice">
+<meta property="og:type" content="website">
+<style>
+  :root {
+    --bg: #f0ebdd;
+    --panel: #fefaec;
+    --ink: #1d1812;
+    --ink-soft: #6b5a44;
+    --ink-faint: #a89880;
+    --accent: #4a3a6a;
+    --accent-light: #7d6d9b;
+    --warn: #b85c2e;
+    --done: #4a7c3d;
+    --objection: #8a4a4a;
+    --border: #d8cbb0;
+    --serif: Georgia, "Times New Roman", serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.65;
+    min-height: 100vh;
+    padding: 1rem;
+  }
+  .container { max-width: 760px; margin: 0 auto; }
+  header { text-align: center; padding: 2rem 0; }
+  header h1 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 6vw, 2.6rem);
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.01em;
+  }
+  header p {
+    color: var(--ink-soft);
+    font-style: italic;
+    font-size: 0.95rem;
+    max-width: 540px;
+    margin: 0 auto;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 0.4rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .tab {
+    padding: 0.55rem 1.1rem;
+    background: transparent;
+    color: var(--ink-soft);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+  .tab.active {
+    background: var(--accent);
+    color: var(--bg);
+    border-color: var(--accent);
+  }
+  .tab:hover:not(.active) { border-color: var(--accent); color: var(--ink); }
+
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px 3px rgba(29,24,18,0.06);
+  }
+  .panel h2 {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    color: var(--accent);
+    margin-bottom: 0.85rem;
+  }
+
+  .topic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 0.6rem;
+  }
+  .topic-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.85rem 1rem;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .topic-card:hover {
+    border-color: var(--accent);
+    background: #fff;
+  }
+  .topic-card.completed {
+    border-color: var(--done);
+    background: #f0f7eb;
+  }
+  .topic-card .name {
+    font-family: var(--serif);
+    color: var(--accent);
+    font-size: 1.02rem;
+    margin-bottom: 0.25rem;
+  }
+  .topic-card .name.completed {
+    color: var(--done);
+  }
+  .topic-card .preview {
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+  .topic-card .status {
+    font-size: 0.7rem;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 0.4rem;
+  }
+
+  .topic-detail {
+    display: none;
+  }
+  .topic-detail.active { display: block; }
+
+  .objection {
+    background: #f7ebe5;
+    border-left: 4px solid var(--objection);
+    padding: 1rem 1.25rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+  }
+  .objection .label {
+    color: var(--objection);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+  .objection .text {
+    font-family: var(--serif);
+    color: var(--ink);
+    font-size: 1.02rem;
+    line-height: 1.65;
+  }
+  .objection .who {
+    color: var(--ink-soft);
+    font-size: 0.78rem;
+    margin-top: 0.4rem;
+    font-style: italic;
+  }
+
+  label {
+    display: block;
+    color: var(--accent);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 1.25rem 0 0.4rem;
+    font-weight: 600;
+  }
+
+  textarea {
+    width: 100%;
+    border: 1px solid var(--border);
+    background: #fff;
+    border-radius: 6px;
+    padding: 0.85rem 1rem;
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 1rem;
+    line-height: 1.65;
+    resize: vertical;
+    min-height: 140px;
+  }
+  textarea:focus { outline: none; border-color: var(--accent); }
+
+  button {
+    background: var(--ink);
+    color: var(--bg);
+    border: none;
+    padding: 0.65rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  button:hover { background: var(--accent); }
+  button.ghost {
+    background: transparent;
+    color: var(--ink-soft);
+    border: 1px solid var(--border);
+  }
+  button.ghost:hover { background: var(--bg); color: var(--ink); border-color: var(--accent); }
+
+  .responses {
+    margin-top: 1.5rem;
+  }
+  .response {
+    background: var(--bg);
+    border-left: 4px solid var(--accent);
+    padding: 1rem 1.25rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+  }
+  .response .author {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-bottom: 0.4rem;
+  }
+  .response .text {
+    font-family: var(--serif);
+    color: var(--ink);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    white-space: pre-line;
+  }
+
+  .scripture-row {
+    margin-top: 1rem;
+    color: var(--ink-soft);
+    font-size: 0.85rem;
+    font-style: italic;
+  }
+  .scripture-row strong {
+    color: var(--accent);
+    font-style: normal;
+  }
+
+  .row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem; }
+
+  .back-link {
+    color: var(--accent);
+    cursor: pointer;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+  }
+  .back-link:hover { color: var(--ink); }
+
+  .quote {
+    background: var(--bg);
+    border-left: 3px solid var(--accent);
+    padding: 0.85rem 1.25rem;
+    border-radius: 4px;
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+    margin: 1rem 0;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 2rem;
+    color: var(--ink-faint);
+    font-size: 0.8rem;
+    line-height: 1.6;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>Counter</h1>
+  <p>be ready to give an answer (1 Peter 3:15) — but practice it before you need it</p>
+</header>
+
+<div class="tabs">
+  <button class="tab active" data-view="topics">Topics</button>
+  <button class="tab" data-view="practice">My answers</button>
+  <button class="tab" data-view="manage">Manage</button>
+</div>
+
+<div id="view-topics" class="view">
+  <div class="panel">
+    <h2>Pick a topic to drill</h2>
+    <div class="quote">"Always be prepared to give an answer to everyone who asks you to give the reason for the hope that you have. But do this with gentleness and respect." — 1 Peter 3:15</div>
+    <p style="color:var(--ink-soft);font-size:0.9rem;margin-bottom:1rem;">Each topic shows the strongest version of the objection (steel-manned), then asks for YOUR response, then reveals how Lewis / Craig / McDowell / Keller / Plantinga answered. Practice the muscle of formulating an answer BEFORE you read theirs.</p>
+    <div class="topic-grid" id="topic-grid"></div>
+  </div>
+</div>
+
+<div id="view-detail" class="topic-detail">
+  <div class="panel" id="detail-panel"></div>
+</div>
+
+<div id="view-practice" class="view" style="display:none;">
+  <div class="panel">
+    <h2>My answers</h2>
+    <div id="practice-list"></div>
+  </div>
+</div>
+
+<div id="view-manage" class="view" style="display:none;">
+  <div class="panel">
+    <h2>Manage</h2>
+    <div class="row">
+      <button class="ghost" id="export-btn">Export JSON</button>
+      <button class="ghost" id="import-btn">Import JSON</button>
+      <button class="ghost" id="reset-btn" style="color:#b04a4a;border-color:#d8b6b6;">Reset all answers</button>
+      <input type="file" id="import-file" accept=".json" style="display:none;">
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>Topics drawn from common objections in modern apologetics literature. Responses paraphrase, not quote.<br>
+  <a href="https://github.com/thebigjah/counter">source</a></p>
+</footer>
+
+</div>
+
+<script>
+'use strict';
+
+const KEY = 'counter.v1';
+
+const TOPICS = [
+  {
+    id: 'evil',
+    name: 'The Problem of Evil',
+    preview: 'If God is all-good and all-powerful, why is there evil?',
+    objection: {
+      text: 'If God is all-loving, all-knowing, and all-powerful, the existence of pointless suffering (cancer in children, genocide, natural disasters) is logically incompatible with His existence. Either He cannot prevent it (not all-powerful), does not know about it (not all-knowing), or does not want to prevent it (not all-loving). Therefore, the Christian God as classically defined does not exist.',
+      who: 'Epicurus, David Hume, J.L. Mackie',
+    },
+    scripture: 'Romans 8:18-28 · Job 38-41 · 2 Corinthians 4:17',
+    responses: [
+      { author: 'Alvin Plantinga (Free Will Defense)', text: 'A world with free creatures capable of moral good is more valuable than a world with no free creatures at all. God could not have created free creatures who always do good, because then they would not be free. Therefore the existence of moral evil is logically compatible with an all-good, all-powerful God who values genuine love over coerced compliance.' },
+      { author: 'C.S. Lewis (The Problem of Pain)', text: 'Pain is God\'s "megaphone to rouse a deaf world." A world without pain would be a world without growth, without sacrifice, without the cross. The objection assumes that physical comfort is the highest good — Christianity has always insisted that holiness, not comfort, is the goal. We complain that the Father did not make our nursery childproof. He intends to make us heirs.' },
+      { author: 'William Lane Craig', text: 'The atheist must show that it is logically impossible for God to have morally sufficient reasons for permitting the evil that exists. That is a burden no atheist has carried. Given our cognitive limitations, we are in no position to assess whether God has such reasons. Greater goods (the cross, soul-making, mature freedom) plausibly require permitted evil.' },
+      { author: 'Tim Keller (Walking with God through Pain and Suffering)', text: 'The cross is the answer not to the philosophical problem of evil but to the existential one. The God of Christianity is not removed from suffering. He entered it. The question "where is God when I suffer?" has the answer "on the cross, suffering with you and for you." Christianity is the only worldview where the suffering of God is at the center.' },
+    ],
+  },
+  {
+    id: 'hell',
+    name: 'Hell and Eternal Punishment',
+    preview: 'Eternal conscious torment for finite sins seems disproportionate.',
+    objection: {
+      text: 'How can a loving God send people to be tortured forever for sins committed in a finite lifetime? The punishment is infinitely disproportionate to the crime. Plus, what about people who never heard of Christianity? A just God would not damn the ignorant. The doctrine of hell makes God look like a cosmic torturer.',
+      who: 'Bertrand Russell, John Stuart Mill',
+    },
+    scripture: 'Matthew 25:46 · 2 Thessalonians 1:9 · Revelation 14:11 · Romans 1:18-21',
+    responses: [
+      { author: 'C.S. Lewis (The Great Divorce, The Problem of Pain)', text: 'The doors of hell are locked from the inside. Hell is not God dragging unwilling people to torment; it is God respecting the choice of people who, for all eternity, refuse Him. The damned are not victims of God\'s will but executors of their own. "There are only two kinds of people in the end: those who say to God, Thy will be done, and those to whom God says, Thy will be done."' },
+      { author: 'Tim Keller', text: 'The objection assumes hell is fundamentally punitive. Scripture and Christian thought present hell more often as the consequence of saying "no" to God across an entire life. People in hell do not want to be in heaven — heaven would be hell to them. The trajectory of a soul away from God can be permanent because we are not changeable infinitely; character calcifies. Hell is the freedom to be left alone forever.' },
+      { author: 'William Lane Craig', text: 'On the question of those who never heard: Scripture indicates God judges people based on the light they have (Romans 1, 2). Many evangelicals hold to "middle knowledge" — God knows what every person would do under every set of circumstances, so no one is damned merely for being born in the wrong place. The persistent rejecter of available light is who Scripture warns. Annihilationism is a legitimate evangelical option for those concerned about eternal duration.' },
+      { author: 'N.T. Wright', text: 'Modern hell-imagery comes more from Dante than Scripture. Biblical language about hell (Gehenna, the lake of fire) often uses image and warning. The deeper issue: when a person, made in God\'s image, chooses to dehumanize themselves by worshiping things less than God, they eventually become inhuman — no longer bearing the image — and pass into a state outside relationship with the source of life. That is hell. It is the natural outcome of unrepentant idolatry.' },
+    ],
+  },
+  {
+    id: 'historical-jesus',
+    name: 'Did Jesus Really Rise?',
+    preview: 'Resurrection accounts are too late, contradictory, and supernatural.',
+    objection: {
+      text: 'The Gospels were written 30-70 years after the events by people with vested interest. The accounts contradict each other (number of angels at the tomb, who arrived first, etc). The "resurrection" claim is more parsimoniously explained as wishful thinking, hallucination, or legendary development. We cannot believe miracles based on biased ancient documents.',
+      who: 'David Hume, Bart Ehrman, Bertrand Russell',
+    },
+    scripture: '1 Corinthians 15:1-8 · Acts 2:22-36',
+    responses: [
+      { author: 'William Lane Craig (4-fact case)', text: 'Four facts accepted by the majority of NT scholars (including non-Christian ones): (1) Jesus was buried by Joseph of Arimathea; (2) the tomb was found empty by women; (3) various individuals and groups had post-mortem appearances of Jesus; (4) the disciples suddenly came to believe he had risen, despite their predisposition against such a belief. The resurrection is the best explanation of these facts. Alternative explanations (theft, hallucination, swoon, legend) each have decisive problems.' },
+      { author: 'N.T. Wright (Resurrection of the Son of God)', text: 'No first-century Jew expected a resurrection of a single individual in the middle of history. Jewish resurrection hope was corporate and end-of-history. Something happened in AD 30 in Jerusalem that caused thousands of Jews to invent a new category. Combined with the empty tomb and resurrection appearances reported across multiple independent traditions, the best historical hypothesis is that Jesus rose. Legend-development cannot explain the speed (Paul has the creed within ~5 years of the cross).' },
+      { author: 'Gary Habermas (Minimal Facts)', text: 'The 12+ apostles, James (Jesus\' skeptical brother), and Paul (a hostile persecutor) all came to believe Jesus rose. They were willing to die for this claim. Liars do not make martyrs — they die for what they sincerely believe. Independent attestations across the Gospels + 1 Corinthians 15 creed + extra-biblical hostile sources confirm the early belief. The hallucination hypothesis cannot account for group appearances or skeptic conversions.' },
+      { author: 'Sean McDowell (Fate of the Apostles)', text: 'The persecution and martyrdom of the apostles is well-attested. Peter and Paul died under Nero. James was stoned in Jerusalem. They did not gain wealth, power, or comfort for their claims. They had everything to lose by maintaining the resurrection story. The simplest explanation: they actually saw what they said they saw.' },
+    ],
+  },
+  {
+    id: 'trinity',
+    name: 'The Trinity is Incoherent',
+    preview: 'Three gods? Or one god with multiple personalities?',
+    objection: {
+      text: 'The doctrine that God is one essence in three persons (Father, Son, Spirit) is logically contradictory. Either you have three gods (tritheism) or one god wearing three masks (modalism). The traditional formula tries to have it both ways. Christians cannot explain it because there is nothing coherent to explain.',
+      who: 'Muslim apologists, Jehovah\'s Witnesses, modern critics',
+    },
+    scripture: 'Matthew 28:19 · John 1:1-14 · 2 Corinthians 13:14 · Deuteronomy 6:4',
+    responses: [
+      { author: 'C.S. Lewis (Mere Christianity)', text: 'A two-dimensional being asked to imagine a cube would say "you cannot have three squares occupying the same space — that is contradictory." But in three dimensions a cube has six square faces that are each independently real and all are the cube. Our problem with the Trinity may be that we are trying to do the math in a lower dimension than God exists in. The Trinity is the kind of thing nobody could have invented; it is more like something we discover.' },
+      { author: 'William Lane Craig', text: 'Distinguish person from being. There is one divine being (the divine essence, uncreated, eternal, omnipotent). Within that one being there are three persons — three centers of consciousness, three "I"s — who eternally relate to each other in love. This is not contradictory; it is a category of existence higher than mere oneness. Analogies fail (a triangle has three sides not three triangles; ice/water/vapor is modalism). The Trinity is sui generis but not incoherent.' },
+      { author: 'Tim Keller', text: 'The Trinity is the deepest answer to "what is the meaning of the universe?" If God is one isolated person, then before creation God was loneliness; love came after creation. But if God is eternal community (Father loving Son, Son loving Father, Spirit as the bond), then love is the deepest reality. Reality is not power, not survival, not chaos. Reality is mutual self-giving love. The Trinity is the only doctrine that makes "God is love" coherent eternally.' },
+      { author: 'Athanasian Creed (4th-5th century)', text: 'The Father is God, the Son is God, the Holy Spirit is God, and yet there are not three Gods, but one God. Distinct in person, equal in glory, co-eternal in majesty. Not by confusion of substance, but by unity of person. This is the catholic faith.' },
+    ],
+  },
+  {
+    id: 'morality',
+    name: 'Morality Doesn\'t Need God',
+    preview: 'Secular ethics work fine. Why drag God into right and wrong?',
+    objection: {
+      text: 'Atheists are demonstrably moral. Secular societies (Scandinavia) have lower crime, better social outcomes. Morality clearly comes from evolved social cooperation and rational reflection, not divine command. Christianity adds nothing — it just labels existing human intuitions as "from God." Plus, the Bible commands slavery and genocide, so Christianity has no monopoly on morality.',
+      who: 'Sam Harris, Christopher Hitchens, Richard Dawkins',
+    },
+    scripture: 'Romans 2:14-15 · Micah 6:8 · Matthew 22:37-40',
+    responses: [
+      { author: 'C.S. Lewis (Mere Christianity)', text: 'Two things to notice. First, that there really is a moral law (we quarrel, we appeal to standards we expect the other person to share, we treat moral disagreement as if there is a right answer). Second, that we all fail to keep it. These two facts are the foundation of Christian thinking. The atheist who acts morally is borrowing capital from a worldview he denies — he behaves as if there are objective moral duties, but his metaphysics can only deliver subjective preferences.' },
+      { author: 'William Lane Craig (Moral Argument)', text: '(1) If God does not exist, objective moral values and duties do not exist. (2) Objective moral values and duties do exist. (3) Therefore God exists. The atheist usually concedes (2) (they say the Holocaust was REALLY wrong, not just culturally distasteful). They then need to explain how (1) is false. Evolutionary accounts explain why we feel moral; they do not explain why anything is actually morally true. The naturalist commits the is-ought fallacy.' },
+      { author: 'Tim Keller (The Reason for God)', text: 'On the OT slavery / genocide objection: read the OT laws comparatively. The OT regulated and humanized practices that pagan cultures took as unconstrained (debt-slavery limits, jubilee, prohibitions on harming foreign laborers). The conquest narratives are not Christian ethics — they are historical, time-bound, and the New Testament reframes the people of God as a non-territorial community. Christians have grounds within their own scripture for opposing all the things the critic opposes.' },
+      { author: 'Sean McDowell', text: 'The objection assumes Christianity needs to deliver moral knowledge that atheists cannot access. That is not the claim. Romans 1-2 says everyone has access to moral knowledge through conscience and creation. The Christian claim is about moral grounding (why is anything actually right or wrong?) and moral power (where does forgiveness for failure come from?). Atheists can recognize the moral law without being able to ground it or fulfill it.' },
+    ],
+  },
+  {
+    id: 'science',
+    name: 'Science Disproves Christianity',
+    preview: 'Modern science makes religious belief obsolete.',
+    objection: {
+      text: 'Modern science explains everything religion used to explain. Evolution replaced Genesis. Cosmology replaced "God created the heavens." Neuroscience is replacing the soul. As science advances, the "god of the gaps" shrinks. Christianity is a pre-scientific worldview that intelligent people should outgrow.',
+      who: 'Richard Dawkins, Stephen Hawking, Neil deGrasse Tyson',
+    },
+    scripture: 'Psalm 19:1 · Romans 1:20 · John 1:1-3',
+    responses: [
+      { author: 'John Lennox', text: 'The conflict-thesis is bad history. The founders of modern science — Newton, Kepler, Galileo, Bacon, Faraday, Maxwell — were Christians who believed they were "thinking God\'s thoughts after Him." Science emerged in the Christian West because Christianity provided the metaphysical preconditions: a rational, contingent, intelligible universe created by a rational God. Atheist materialism makes scientific knowledge harder to justify, not easier (why trust evolved brains for abstract truth?).' },
+      { author: 'C.S. Lewis (Miracles)', text: 'Science studies nature; it cannot, in principle, address whether anything exists beyond nature. Saying "science disproves God" is like saying "this fishing net only catches fish, therefore there are no whales." Science is brilliant at describing how the universe works; it is silent on why there is something rather than nothing, what consciousness is, why mathematical truths exist, and what moral duties bind us. These are not gaps science will fill; they are different kinds of questions.' },
+      { author: 'William Lane Craig (Kalam)', text: '(1) Whatever begins to exist has a cause. (2) The universe began to exist (Big Bang cosmology supports this — the past is finite). (3) Therefore the universe has a cause. That cause must be timeless, spaceless, immaterial, and unimaginably powerful — strikingly God-like. Modern cosmology has not undermined classical theistic arguments; it has made some of them more powerful than they were in the medieval period.' },
+      { author: 'Francis Collins (Director, NIH; The Language of God)', text: 'I led the Human Genome Project as a Christian, not despite being one. The DNA code, the fine-tuning of physical constants, and the existence of conscious moral beings are pointers to a Creator. Evolution describes mechanism, not meaning. Theistic evolution holds that God is the author of natural processes. There is no necessary conflict — only conflict between bad theology and bad science, both of which the Christian tradition has resources to correct.' },
+    ],
+  },
+  {
+    id: 'bible-reliability',
+    name: 'The Bible Has Been Changed Over Time',
+    preview: 'How do we trust documents copied for 2000 years?',
+    objection: {
+      text: 'The Bible has been copied and re-copied for two thousand years, translated through Hebrew, Aramaic, Greek, Latin, into English. We do not have original autographs. Scribes added, removed, and corrupted texts (Mark 16:9-20, John 7:53-8:11, etc). Comparing manuscript variants shows tens of thousands of differences. How can you trust any of this?',
+      who: 'Bart Ehrman (Misquoting Jesus), Dan Brown\'s influence',
+    },
+    scripture: '2 Timothy 3:16 · Matthew 24:35 · Psalm 119:89',
+    responses: [
+      { author: 'Daniel Wallace (Center for the Study of New Testament Manuscripts)', text: 'The NT has 5,800+ Greek manuscripts and 10,000+ Latin plus thousands more in other ancient languages. Compare to Homer\'s Iliad (~600 manuscripts, none within 1,000 years of original). The "400,000 variants" figure is technically true but misleading: 99% are spelling/word-order variants that do not affect meaning. Variants that are both viable and meaningful are less than 1%. NO Christian doctrine depends on a disputed text. We can reconstruct the original text with extreme confidence.' },
+      { author: 'F.F. Bruce', text: 'The interval between original composition and earliest surviving manuscripts is unusually short for the NT (P52 papyrus dates to ~125 AD, ~25 years after John). For the OT, the Dead Sea Scrolls (mid-2nd century BC) match the Masoretic text (10th century AD) at over 95% letter-by-letter for Isaiah. Scribes had powerful incentives to preserve, not innovate. The Bible is the most rigorously preserved ancient document in human history.' },
+      { author: 'Sean McDowell', text: 'The honest discussion of variants is actually a Christian strength, not a weakness. Christians are willing to publish their textual apparatuses in the margins of their Bibles — go look at any modern translation\'s footnotes. We have nothing to hide. Other religious texts (Quran) suppressed their variants. We disclose them, and the disclosure shows that the variants do not change Christian doctrine.' },
+      { author: 'Tim Keller (paraphrased)', text: 'The Bible\'s claim is not "we have perfect copies." The claim is that God preserved His word sufficiently for the church to know Him through it. The textual criticism scholarship of the last 200 years has, on balance, increased our confidence — the more manuscripts we find, the more the Christian doctrine of preservation looks defensible. The objection rests on a higher epistemic standard than we apply to any ancient document.' },
+    ],
+  },
+  {
+    id: 'exclusivity',
+    name: 'Christian Exclusivity is Arrogant',
+    preview: 'You are saying everyone in every other religion is wrong?',
+    objection: {
+      text: 'It is arrogant to claim that Christianity is THE truth and every other religion is false. With billions of sincere Muslims, Hindus, Buddhists, secular humanists, etc., how can one religion be uniquely correct? Religious exclusivity has caused enormous violence. The mature view is religious pluralism: all paths lead to the same mountaintop.',
+      who: 'John Hick, Stephen Prothero (less so), popular culture',
+    },
+    scripture: 'John 14:6 · Acts 4:12 · 1 Timothy 2:5',
+    responses: [
+      { author: 'Tim Keller (The Reason for God)', text: 'Pluralism is itself an exclusive claim. To say "no religion has the truth, they all just contain pieces of it" is itself a religious claim that contradicts what every major religion actually claims about itself. The pluralist accuses Christians of arrogance while making a more sweeping claim — that he sees the truth all the believers cannot see. The blind-men-and-elephant story requires someone (the storyteller) who CAN see the whole elephant. Pluralism is more arrogant, not less.' },
+      { author: 'C.S. Lewis (Mere Christianity)', text: 'If you are a Christian, you are free to believe that all other religions, even the queerest ones, contain at least some hint of the truth. When I was an atheist I had to try to persuade myself that most of the human race had always been wrong about the question that mattered most. The Christian is not committed to believing that all other religions are simply wrong all through. The Muslim affirmation of God\'s sovereignty, the Hindu intuition of the divine, the Buddhist diagnosis of human craving — Christians can affirm what is true in each while insisting that Jesus is the unique fulfillment.' },
+      { author: 'William Lane Craig', text: 'The exclusivity of Christianity is a logical entailment of its central claim: Jesus is uniquely God incarnate, uniquely raised, uniquely the propitiation for sin. If that is true, no other religion offers what Christianity offers. The proper response to this is not to soften the claim but to ask whether the claim is true. If it is, the exclusivity is not arrogant; it is just true. If it is false, then Christianity is false. There is no middle path that respects what Christianity actually says.' },
+      { author: 'Lesslie Newbigin (The Gospel in a Pluralist Society)', text: 'The pluralist is functioning as a missionary for a particular Enlightenment story about religion. He has not transcended exclusive truth-claims; he has just made a new one. The Christian story takes other religions seriously enough to engage them as actual rival accounts. Christ is announced not as one option in a market but as the Lord of all who is going to be ultimately recognized.' },
+    ],
+  },
+];
+
+let state = load();
+
+function load() {
+  try { return JSON.parse(localStorage.getItem(KEY) || '{}'); } catch { return {}; }
+}
+function save() { localStorage.setItem(KEY, JSON.stringify(state)); }
+function escapeHtml(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+function renderTopics() {
+  const grid = document.getElementById('topic-grid');
+  grid.innerHTML = TOPICS.map(t => {
+    const s = state[t.id] || {};
+    const completed = !!s.revealed;
+    return `
+      <div class="topic-card ${completed ? 'completed' : ''}" onclick="openTopic('${t.id}')">
+        <div class="name ${completed ? 'completed' : ''}">${escapeHtml(t.name)}</div>
+        <div class="preview">${escapeHtml(t.preview)}</div>
+        <div class="status">${completed ? '✓ revealed' : (s.answer ? 'in progress' : 'not started')}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+window.openTopic = (id) => {
+  const t = TOPICS.find(x => x.id === id);
+  if (!t) return;
+  const s = state[id] || { answer: '', revealed: false };
+  document.querySelectorAll('.view').forEach(v => v.style.display = 'none');
+  const detail = document.getElementById('view-detail');
+  detail.classList.add('active');
+  const panel = document.getElementById('detail-panel');
+  panel.innerHTML = `
+    <a class="back-link" onclick="closeTopic()">← back to topics</a>
+    <h2>${escapeHtml(t.name)}</h2>
+    <div class="objection">
+      <div class="label">The strongest version of the objection</div>
+      <div class="text">${escapeHtml(t.objection.text)}</div>
+      <div class="who">— ${escapeHtml(t.objection.who)}</div>
+    </div>
+    <label>Your response — write it BEFORE you reveal the experts</label>
+    <textarea id="my-answer" placeholder="What would you say if a thoughtful skeptic asked you this tonight? Don't reach for the answers; reach for your answer.">${escapeHtml(s.answer)}</textarea>
+    <div class="scripture-row"><strong>Relevant scripture:</strong> ${escapeHtml(t.scripture)}</div>
+    <div class="row">
+      <button onclick="saveAnswer('${id}')">Save my answer</button>
+      <button class="ghost" onclick="reveal('${id}')">${s.revealed ? 'Show experts' : 'Reveal experts'}</button>
+    </div>
+    <div id="responses-${id}" class="responses" style="display:${s.revealed ? 'block' : 'none'};">
+      ${t.responses.map(r => `
+        <div class="response">
+          <div class="author">${escapeHtml(r.author)}</div>
+          <div class="text">${escapeHtml(r.text)}</div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+};
+
+window.closeTopic = () => {
+  document.getElementById('view-detail').classList.remove('active');
+  showView('topics');
+};
+
+window.saveAnswer = (id) => {
+  const text = document.getElementById('my-answer').value;
+  state[id] = state[id] || {};
+  state[id].answer = text;
+  state[id].savedAt = new Date().toISOString();
+  save();
+  renderTopics();
+  alert('Saved.');
+};
+
+window.reveal = (id) => {
+  const text = document.getElementById('my-answer').value;
+  state[id] = state[id] || {};
+  state[id].answer = text;
+  state[id].revealed = true;
+  state[id].revealedAt = new Date().toISOString();
+  save();
+  document.getElementById('responses-' + id).style.display = 'block';
+  renderTopics();
+};
+
+function renderPractice() {
+  const el = document.getElementById('practice-list');
+  const written = TOPICS.filter(t => (state[t.id] || {}).answer).map(t => ({ topic: t, s: state[t.id] }));
+  if (!written.length) { el.innerHTML = '<div class="empty" style="color:var(--ink-faint);font-style:italic;padding:1.5rem 0;text-align:center;">Write some answers first.</div>'; return; }
+  el.innerHTML = written.map(({ topic, s }) => `
+    <div style="padding:1.25rem 0;border-bottom:1px solid var(--border);">
+      <h2 style="font-family:var(--serif);color:var(--accent);font-size:1.05rem;margin-bottom:0.4rem;">${escapeHtml(topic.name)}</h2>
+      <div style="color:var(--ink-faint);font-size:0.78rem;margin-bottom:0.5rem;">saved ${new Date(s.savedAt || s.revealedAt).toLocaleDateString()} · ${s.revealed ? 'experts revealed' : 'not yet revealed'}</div>
+      <div style="font-family:var(--serif);color:var(--ink);white-space:pre-wrap;line-height:1.7;">${escapeHtml(s.answer)}</div>
+      <div style="margin-top:0.6rem;"><button onclick="openTopic('${topic.id}')" style="padding:0.35rem 0.8rem;font-size:0.8rem;">Return to topic</button></div>
+    </div>
+  `).join('');
+}
+
+function exportJSON() {
+  const blob = new Blob([JSON.stringify(state, null, 2)], { type:'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'counter-' + new Date().toISOString().split('T')[0] + '.json';
+  a.click();
+}
+
+function importJSON(e) {
+  const file = e.target.files[0]; if (!file) return;
+  const r = new FileReader();
+  r.onload = ev => {
+    try {
+      const data = JSON.parse(ev.target.result);
+      if (!confirm('Merge answers from this file?')) return;
+      Object.keys(data).forEach(k => state[k] = { ...(state[k] || {}), ...data[k] });
+      save();
+      renderTopics();
+      renderPractice();
+      alert('Merged.');
+    } catch (err) { alert('Bad JSON: ' + err.message); }
+  };
+  r.readAsText(file);
+}
+
+function resetAll() {
+  if (!confirm('Erase all your answers?')) return;
+  localStorage.removeItem(KEY); state = {};
+  renderTopics(); renderPractice();
+}
+
+function showView(name) {
+  document.querySelectorAll('.view').forEach(v => v.style.display = 'none');
+  document.getElementById('view-detail').classList.remove('active');
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('view-' + name).style.display = '';
+  document.querySelector(`.tab[data-view="${name}"]`).classList.add('active');
+  if (name === 'topics') renderTopics();
+  if (name === 'practice') renderPractice();
+}
+
+document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => showView(t.dataset.view)));
+document.getElementById('export-btn').addEventListener('click', exportJSON);
+document.getElementById('import-btn').addEventListener('click', () => document.getElementById('import-file').click());
+document.getElementById('import-file').addEventListener('change', importJSON);
+document.getElementById('reset-btn').addEventListener('click', resetAll);
+
+renderTopics();
+renderPractice();
+</script>
+
+</body>
+</html>

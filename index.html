@@ -3,296 +3,395 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Counter — apologetics practice for Christians who actually want to be ready</title>
+<title>Counter · apologetics drill</title>
 <meta name="description" content="For each common objection to Christian faith, see the strongest version, write your response, then compare to how Lewis, Craig, McDowell, and others answered.">
-<meta property="og:title" content="Counter — apologetics practice">
+<meta property="og:title" content="Counter · apologetics drill">
 <meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Faustina:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #f0ebdd;
-    --panel: #fefaec;
-    --ink: #1d1812;
-    --ink-soft: #6b5a44;
-    --ink-faint: #a89880;
-    --accent: #4a3a6a;
-    --accent-light: #7d6d9b;
-    --warn: #b85c2e;
-    --done: #4a7c3d;
-    --objection: #8a4a4a;
-    --border: #d8cbb0;
-    --serif: Georgia, "Times New Roman", serif;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-    background: var(--bg);
-    color: var(--ink);
-    line-height: 1.65;
-    min-height: 100vh;
-    padding: 1rem;
-  }
-  .container { max-width: 760px; margin: 0 auto; }
-  header { text-align: center; padding: 2rem 0; }
-  header h1 {
-    font-family: var(--serif);
-    font-size: clamp(2rem, 6vw, 2.6rem);
-    color: var(--accent);
-    margin-bottom: 0.4rem;
-    letter-spacing: -0.01em;
-  }
-  header p {
-    color: var(--ink-soft);
-    font-style: italic;
-    font-size: 0.95rem;
-    max-width: 540px;
-    margin: 0 auto;
-  }
+/*  ============================================================
+    COUNTER · scholarly academic-press journal
+    -----------------------------------------------------------
+    Theme: a sage-tinted academic journal. Articles numbered.
+    Objection presented as a formal block-quote with citation.
+    User's response in a write-in field that looks like an
+    examination booklet. Responses from authorities listed like
+    footnotes — name, affiliation, paraphrased argument.
+    NO italic-serif display, NO drop caps, NO cream paper.
+    ============================================================ */
 
-  .tabs {
-    display: flex;
-    gap: 0.4rem;
-    margin-bottom: 1.5rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .tab {
-    padding: 0.55rem 1.1rem;
-    background: transparent;
-    color: var(--ink-soft);
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    font-family: inherit;
-    font-size: 0.85rem;
-    cursor: pointer;
-  }
-  .tab.active {
-    background: var(--accent);
-    color: var(--bg);
-    border-color: var(--accent);
-  }
-  .tab:hover:not(.active) { border-color: var(--accent); color: var(--ink); }
+:root{
+  --paper:#e8e9da;
+  --paper-deep:#dcddcc;
+  --paper-shade:#c8cab8;
+  --paper-shade-warm:#c0c0a8;
+  --ink:#131512;
+  --ink-soft:#3d4039;
+  --ink-faint:#6e7264;
+  --oxblood:#5e1e1e;
+  --oxblood-light:#8a3030;
+  --sage:#3a4a35;
+  --sage-light:#5d7250;
+  --slate:#344560;
+  --slate-light:#5a6e88;
+  --rule:rgba(19, 21, 18, 0.16);
+  --rule-strong:rgba(19, 21, 18, 0.36);
 
-  .panel {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 1px 3px rgba(29,24,18,0.06);
-  }
-  .panel h2 {
-    font-family: var(--serif);
-    font-size: 1.15rem;
-    color: var(--accent);
-    margin-bottom: 0.85rem;
-  }
+  --slab:'Faustina', Georgia, serif;
+  --body:'Newsreader', Georgia, serif;
+  --mono:'IBM Plex Mono', ui-monospace, monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{
+  background:var(--paper);color:var(--ink);
+  font-family:var(--body);font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  font-size:17px;line-height:1.6;
+  min-height:100vh;
+}
+body{position:relative}
 
-  .topic-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 0.6rem;
-  }
-  .topic-card {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 0.85rem 1rem;
-    cursor: pointer;
-    transition: border-color 0.15s, background 0.15s;
-  }
-  .topic-card:hover {
-    border-color: var(--accent);
-    background: #fff;
-  }
-  .topic-card.completed {
-    border-color: var(--done);
-    background: #f0f7eb;
-  }
-  .topic-card .name {
-    font-family: var(--serif);
-    color: var(--accent);
-    font-size: 1.02rem;
-    margin-bottom: 0.25rem;
-  }
-  .topic-card .name.completed {
-    color: var(--done);
-  }
-  .topic-card .preview {
-    font-size: 0.8rem;
-    color: var(--ink-soft);
-    line-height: 1.4;
-  }
-  .topic-card .status {
-    font-size: 0.7rem;
-    color: var(--ink-faint);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-top: 0.4rem;
-  }
+.container{
+  max-width:880px;margin:0 auto;padding:0 36px;
+}
 
-  .topic-detail {
-    display: none;
-  }
-  .topic-detail.active { display: block; }
+/* ============================================================
+   HEADER — academic journal masthead, two-column-ish
+   ============================================================ */
+header{
+  padding:48px 0 28px;
+  border-bottom:4px solid var(--ink);
+  position:relative;
+  display:grid;grid-template-columns:1fr auto;align-items:end;gap:32px;
+}
+.masthead-left{}
+.journal-label{
+  font-family:var(--mono);font-weight:500;font-size:11px;
+  letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--sage);margin-bottom:8px;
+}
+h1{
+  font-family:var(--slab);font-weight:600;
+  font-size:64px;line-height:0.95;color:var(--ink);
+  letter-spacing:-0.02em;margin:0;
+}
+.tagline{
+  font-family:var(--body);font-weight:400;font-size:16px;
+  color:var(--ink-soft);max-width:480px;margin-top:14px;line-height:1.5;
+}
+.masthead-right{
+  font-family:var(--mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--ink-faint);text-align:right;line-height:1.7;
+  border-left:1px solid var(--rule-strong);padding-left:24px;
+}
+.masthead-right .issue{color:var(--ink);font-weight:500}
+.masthead-right .vol{display:block;margin-top:4px}
 
-  .objection {
-    background: #f7ebe5;
-    border-left: 4px solid var(--objection);
-    padding: 1rem 1.25rem;
-    border-radius: 6px;
-    margin-bottom: 1rem;
-  }
-  .objection .label {
-    color: var(--objection);
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    font-weight: 600;
-    margin-bottom: 0.4rem;
-  }
-  .objection .text {
-    font-family: var(--serif);
-    color: var(--ink);
-    font-size: 1.02rem;
-    line-height: 1.65;
-  }
-  .objection .who {
-    color: var(--ink-soft);
-    font-size: 0.78rem;
-    margin-top: 0.4rem;
-    font-style: italic;
-  }
+/* ============================================================
+   TABS — pagination tabs, slab-serif
+   ============================================================ */
+.tabs{
+  display:flex;justify-content:flex-start;gap:0;
+  margin:0 0 36px;
+  border-bottom:1px solid var(--rule-strong);
+  flex-wrap:wrap;background:var(--paper);
+  position:sticky;top:0;z-index:5;
+}
+.tab{
+  background:transparent;border:none;cursor:pointer;
+  font-family:var(--slab);font-weight:500;font-size:14px;
+  letter-spacing:0.04em;color:var(--ink-faint);
+  padding:18px 22px;
+  position:relative;transition:all .12s;
+}
+.tab:hover{color:var(--ink);background:rgba(58, 74, 53, 0.05)}
+.tab.active{color:var(--ink)}
+.tab.active::after{
+  content:"";position:absolute;left:0;right:0;bottom:-1px;height:3px;
+  background:var(--sage);
+}
 
-  label {
-    display: block;
-    color: var(--accent);
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    margin: 1.25rem 0 0.4rem;
-    font-weight: 600;
-  }
+main{padding-bottom:80px}
 
-  textarea {
-    width: 100%;
-    border: 1px solid var(--border);
-    background: #fff;
-    border-radius: 6px;
-    padding: 0.85rem 1rem;
-    color: var(--ink);
-    font-family: var(--serif);
-    font-size: 1rem;
-    line-height: 1.65;
-    resize: vertical;
-    min-height: 140px;
-  }
-  textarea:focus { outline: none; border-color: var(--accent); }
+.panel{
+  /* Articles use no boxes — held together by sectioning */
+  padding:24px 0 48px;
+}
+.panel h2{
+  font-family:var(--slab);font-weight:600;font-size:30px;
+  color:var(--ink);
+  margin-bottom:18px;letter-spacing:-0.015em;
+}
 
-  button {
-    background: var(--ink);
-    color: var(--bg);
-    border: none;
-    padding: 0.65rem 1.2rem;
-    border-radius: 6px;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 0.9rem;
-    font-weight: 500;
-  }
-  button:hover { background: var(--accent); }
-  button.ghost {
-    background: transparent;
-    color: var(--ink-soft);
-    border: 1px solid var(--border);
-  }
-  button.ghost:hover { background: var(--bg); color: var(--ink); border-color: var(--accent); }
+.quote{
+  background:transparent;border:none;border-radius:0;
+  border-left:3px solid var(--sage);
+  padding:8px 0 8px 22px;
+  margin:24px 0;
+  font-family:var(--body);font-weight:400;font-style:italic;
+  color:var(--ink-soft);font-size:16px;line-height:1.55;
+}
 
-  .responses {
-    margin-top: 1.5rem;
-  }
-  .response {
-    background: var(--bg);
-    border-left: 4px solid var(--accent);
-    padding: 1rem 1.25rem;
-    border-radius: 6px;
-    margin-bottom: 1rem;
-  }
-  .response .author {
-    color: var(--accent);
-    font-weight: 600;
-    font-size: 0.85rem;
-    margin-bottom: 0.4rem;
-  }
-  .response .text {
-    font-family: var(--serif);
-    color: var(--ink);
-    font-size: 0.95rem;
-    line-height: 1.7;
-    white-space: pre-line;
-  }
+/* ============================================================
+   TOPIC INDEX — academic table of contents
+   ============================================================ */
+.topic-grid{
+  display:flex;flex-direction:column;gap:0;
+  margin-top:24px;
+  border-top:2px solid var(--ink);
+  counter-reset:art-counter;
+}
+.topic-card{
+  display:grid;grid-template-columns:64px 1fr auto;gap:24px;align-items:start;
+  background:transparent;border:none;border-radius:0;
+  border-bottom:1px solid var(--rule);
+  padding:20px 14px;cursor:pointer;
+  transition:background .12s;
+}
+.topic-card:hover{background:rgba(58, 74, 53, 0.05)}
+.topic-card::before{
+  counter-increment:art-counter;
+  content:"Art. " counter(art-counter, decimal-leading-zero);
+  font-family:var(--mono);font-weight:500;font-size:11px;
+  letter-spacing:0.16em;color:var(--sage);text-transform:uppercase;
+  padding-top:4px;
+}
+.topic-card.completed::before{color:var(--slate)}
+.topic-card.completed{background:rgba(58, 74, 53, 0.04)}
+.topic-card .name{
+  font-family:var(--slab);font-weight:600;font-size:20px;
+  color:var(--ink);letter-spacing:-0.005em;line-height:1.2;
+  margin-bottom:5px;
+}
+.topic-card.completed .name{color:var(--sage)}
+.topic-card .preview{
+  font-family:var(--body);font-size:15px;
+  color:var(--ink-soft);line-height:1.45;
+}
+.topic-card .status{
+  font-family:var(--mono);font-size:9.5px;letter-spacing:0.16em;
+  color:var(--ink-faint);text-transform:uppercase;
+  padding-top:6px;text-align:right;min-width:90px;
+}
+.topic-card.completed .status{color:var(--sage)}
 
-  .scripture-row {
-    margin-top: 1rem;
-    color: var(--ink-soft);
-    font-size: 0.85rem;
-    font-style: italic;
-  }
-  .scripture-row strong {
-    color: var(--accent);
-    font-style: normal;
-  }
+/* ============================================================
+   TOPIC DETAIL — full disputation article
+   ============================================================ */
+.topic-detail{display:none}
+.topic-detail.active{display:block}
 
-  .row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem; }
+.back-link{
+  font-family:var(--mono);font-size:11px;letter-spacing:0.18em;
+  color:var(--sage);text-transform:uppercase;
+  cursor:pointer;margin-bottom:24px;display:inline-block;
+  transition:color .12s;font-weight:500;
+}
+.back-link:hover{color:var(--ink)}
+.back-link::before{content:"← "}
 
-  .back-link {
-    color: var(--accent);
-    cursor: pointer;
-    font-size: 0.85rem;
-    margin-bottom: 1rem;
-    display: inline-block;
-  }
-  .back-link:hover { color: var(--ink); }
+#detail-panel h2{
+  font-family:var(--slab);font-weight:600;font-size:34px;
+  color:var(--ink);line-height:1.05;letter-spacing:-0.015em;
+  padding-bottom:18px;margin-bottom:28px;
+  border-bottom:2px solid var(--ink);
+}
 
-  .quote {
-    background: var(--bg);
-    border-left: 3px solid var(--accent);
-    padding: 0.85rem 1.25rem;
-    border-radius: 4px;
-    font-style: italic;
-    color: var(--ink-soft);
-    font-size: 0.9rem;
-    margin: 1rem 0;
-  }
+/* OBJECTION block — formal academic block-quote */
+.objection{
+  background:transparent;
+  border:none;border-radius:0;
+  padding:0 0 0 28px;
+  margin:8px 0 32px;
+  position:relative;
+}
+.objection::before{
+  content:"";
+  position:absolute;left:0;top:8px;bottom:8px;
+  width:4px;background:var(--oxblood);
+}
+.objection .label{
+  font-family:var(--mono);font-weight:500;font-size:10.5px;
+  letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--oxblood);margin-bottom:14px;display:block;
+}
+.objection .text{
+  font-family:var(--slab);font-weight:500;
+  color:var(--ink);font-size:21px;line-height:1.5;letter-spacing:-0.005em;
+}
+.objection .who{
+  font-family:var(--mono);font-weight:400;font-size:10.5px;
+  letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--ink-faint);margin-top:18px;
+}
+.objection .who::before{content:"— "}
 
-  footer {
-    text-align: center;
-    margin-top: 2rem;
-    color: var(--ink-faint);
-    font-size: 0.8rem;
-    line-height: 1.6;
-  }
-  footer a { color: var(--accent); text-decoration: none; }
+/* FORMS */
+label{
+  display:block;font-family:var(--mono);font-weight:500;
+  color:var(--sage);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;
+  margin:32px 0 12px;
+}
+label::before{content:"§ ";color:var(--ink-faint)}
+textarea{
+  width:100%;background:var(--paper-deep);
+  border:1px solid var(--rule-strong);border-radius:0;
+  color:var(--ink);
+  font-family:var(--body);font-size:17px;line-height:1.7;
+  padding:18px 22px;outline:none;
+  resize:vertical;min-height:160px;
+}
+textarea:focus{border-color:var(--sage)}
+textarea::placeholder{color:var(--ink-faint)}
+
+button{
+  font-family:var(--mono);font-weight:500;font-size:11.5px;
+  letter-spacing:0.2em;text-transform:uppercase;
+  background:var(--ink);color:var(--paper);border:none;
+  padding:13px 22px;cursor:pointer;
+  transition:all .15s;border-radius:0;
+}
+button:hover{background:var(--sage)}
+button.ghost{
+  background:transparent;color:var(--ink-soft);
+  border:1px solid var(--ink-soft);
+}
+button.ghost:hover{background:var(--ink-soft);color:var(--paper);border-color:var(--ink-soft)}
+.row{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+
+.scripture-row{
+  margin-top:20px;padding:14px 22px;
+  background:var(--paper-deep);
+  font-family:var(--body);font-size:14.5px;
+  color:var(--ink-soft);
+  border-left:3px solid var(--slate);
+}
+.scripture-row strong{
+  font-family:var(--mono);font-weight:500;font-size:10px;
+  color:var(--slate);letter-spacing:0.2em;text-transform:uppercase;
+  margin-right:10px;display:block;margin-bottom:4px;
+}
+
+/* RESPONSES — footnote-style citations */
+.responses{
+  margin-top:48px;padding-top:24px;
+  border-top:2px solid var(--ink);
+  counter-reset:resp-counter;
+}
+.responses::before{
+  content:"Responses from the authorities";
+  display:block;
+  font-family:var(--mono);font-weight:500;font-size:11px;
+  letter-spacing:0.2em;color:var(--sage);
+  text-transform:uppercase;margin-bottom:24px;
+}
+.response{
+  background:transparent;border:none;border-radius:0;
+  display:grid;grid-template-columns:40px 1fr;gap:18px;
+  padding:18px 0;margin-bottom:8px;
+  border-bottom:1px solid var(--rule);
+}
+.response::before{
+  counter-increment:resp-counter;
+  content:"§ " counter(resp-counter);
+  font-family:var(--mono);font-weight:500;font-size:11px;
+  letter-spacing:0.12em;color:var(--ink-faint);
+  text-transform:uppercase;padding-top:3px;
+}
+.response:last-child{border-bottom:none}
+.response .author{
+  font-family:var(--slab);font-weight:600;font-size:16px;
+  color:var(--sage);margin-bottom:8px;
+  display:block;letter-spacing:-0.005em;
+}
+.response .text{
+  font-family:var(--body);font-size:15.5px;
+  color:var(--ink);line-height:1.7;white-space:pre-line;
+}
+
+/* PRACTICE LIST */
+#practice-list > div{
+  padding:24px 0 !important;
+  border-bottom:1px solid var(--rule) !important;
+}
+#practice-list h2{
+  font-family:var(--slab) !important;font-weight:600 !important;font-style:normal !important;
+  color:var(--ink) !important;font-size:22px !important;
+  margin-bottom:8px !important;letter-spacing:-0.005em !important;
+}
+
+.empty{
+  text-align:left;color:var(--ink-faint);
+  font-family:var(--body);font-size:15px;
+  padding:32px 0;
+}
+
+/* ============================================================
+   FOOTER — colophon / publication info
+   ============================================================ */
+footer{
+  text-align:left;margin-top:48px;padding:32px 0 56px;
+  border-top:2px solid var(--ink);
+  display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;
+}
+footer p{
+  font-family:var(--body);font-size:13.5px;
+  color:var(--ink-soft);line-height:1.7;
+}
+footer a{color:var(--sage);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .12s}
+footer a:hover{border-bottom-color:var(--sage)}
+.credit{
+  font-family:var(--mono);font-weight:500;font-size:9px;letter-spacing:0.42em;
+  color:var(--ink-faint);text-align:right;
+}
+
+@media(max-width:680px){
+  .container{padding:0 22px}
+  header{display:block;padding:32px 0 22px}
+  .masthead-right{text-align:left;padding-left:0;border-left:none;
+    border-top:1px solid var(--rule-strong);padding-top:14px;margin-top:18px}
+  h1{font-size:46px}
+  .topic-card{grid-template-columns:1fr;gap:6px}
+  .topic-card::before{font-size:10px}
+  .topic-card .status{text-align:left;padding-top:8px}
+  #detail-panel h2{font-size:26px}
+  .objection .text{font-size:18px}
+  .tab{padding:14px 16px;font-size:13px}
+  footer{display:block}
+  .credit{text-align:left;margin-top:14px}
+}
 </style>
 </head>
 <body>
 <div class="container">
 
 <header>
-  <h1>Counter</h1>
-  <p>be ready to give an answer (1 Peter 3:15) — but practice it before you need it</p>
+  <div class="masthead-left">
+    <div class="journal-label">A Journal of Disputations</div>
+    <h1>Counter</h1>
+    <p class="tagline">Be ready to give an answer (1 Peter 3:15) — but practice it before you need it. Each article presents the steel-manned objection, asks for <em>your</em> response, then publishes the responses of the authorities.</p>
+  </div>
+  <div class="masthead-right">
+    <span class="issue">Vol. I · Issue I</span>
+    <span class="vol">AD MMXXVI · Acworth</span>
+  </div>
 </header>
 
 <div class="tabs">
-  <button class="tab active" data-view="topics">Topics</button>
+  <button class="tab active" data-view="topics">Articles</button>
   <button class="tab" data-view="practice">My answers</button>
   <button class="tab" data-view="manage">Manage</button>
 </div>
 
+<main>
+
 <div id="view-topics" class="view">
   <div class="panel">
-    <h2>Pick a topic to drill</h2>
-    <div class="quote">"Always be prepared to give an answer to everyone who asks you to give the reason for the hope that you have. But do this with gentleness and respect." — 1 Peter 3:15</div>
-    <p style="color:var(--ink-soft);font-size:0.9rem;margin-bottom:1rem;">Each topic shows the strongest version of the objection (steel-manned), then asks for YOUR response, then reveals how Lewis / Craig / McDowell / Keller / Plantinga answered. Practice the muscle of formulating an answer BEFORE you read theirs.</p>
+    <h2>Table of articles</h2>
+    <p style="font-family:var(--body);color:var(--ink-soft);font-size:15px;line-height:1.55;margin:0 0 8px">Write your answer to each objection <em>before</em> consulting the responses below it. That is the muscle this drill builds.</p>
+    <div class="quote">Always be prepared to give an answer to everyone who asks you to give the reason for the hope that you have. But do this with gentleness and respect. — 1 Peter 3:15</div>
     <div class="topic-grid" id="topic-grid"></div>
   </div>
 </div>
@@ -314,15 +413,18 @@
     <div class="row">
       <button class="ghost" id="export-btn">Export JSON</button>
       <button class="ghost" id="import-btn">Import JSON</button>
-      <button class="ghost" id="reset-btn" style="color:#b04a4a;border-color:#d8b6b6;">Reset all answers</button>
+      <button class="ghost" id="reset-btn" style="color:var(--oxblood-light);border-color:var(--oxblood)">Reset all answers</button>
       <input type="file" id="import-file" accept=".json" style="display:none;">
     </div>
   </div>
 </div>
 
+</main>
+
 <footer>
   <p>Topics drawn from common objections in modern apologetics literature. Responses paraphrase, not quote.<br>
-  <a href="https://github.com/thebigjah/counter">source</a></p>
+  <a href="https://github.com/thebigjah/counter">github.com/thebigjah/counter</a></p>
+  <div class="credit">— PURCELLVENTURES.CO —</div>
 </footer>
 
 </div>
@@ -430,6 +532,37 @@ const TOPICS = [
     ],
   },
   {
+    id: 'exclusivity',
+    name: 'Christianity is Arrogant — One True Way?',
+    preview: 'How can one religion claim to be uniquely true?',
+    objection: {
+      text: 'Christianity claims Jesus is "the way, the truth, and the life — no one comes to the Father except through me" (John 14:6). This is religious imperialism. Billions of sincere Hindus, Muslims, Buddhists, and Jews cannot all be wrong. The exclusivity of Christianity is what causes religious wars and intolerance. A loving God would have multiple paths.',
+      who: 'John Hick, modern pluralists, multiculturalism',
+    },
+    scripture: 'John 14:6 · Acts 4:12 · 1 Timothy 2:5 · John 3:16',
+    responses: [
+      { author: 'Tim Keller (The Reason for God)', text: 'The "all roads lead to God" position is itself an exclusive claim — it says all the religions making exclusive claims are wrong, and the pluralist is right. There is no view-from-nowhere. The question is not which view is exclusive (they all are) but which view best fits reality. Christianity makes the unique claim that humans cannot find God; God came to find us. This is not arrogance — it is the opposite. Other religions teach paths to climb; Christianity teaches that no one can climb, so the Climber came down.' },
+      { author: 'C.S. Lewis (Mere Christianity)', text: 'If Christianity is true, then it is the most important truth. To be tolerant of error in the name of tolerance is to be cruel about the error. A man with cancer wants the diagnosis right, not multiple competing opinions all being treated as equally valid. If Jesus is who he said he is, the offer of salvation through him is not arrogance but the most generous offer in history.' },
+      { author: 'Ravi Zacharias', text: 'The major world religions contradict each other on the most basic claims — who God is, what humanity\'s problem is, what the solution is. They cannot all be true any more than 2+2 can equal 4 and 5 simultaneously. The question is which view corresponds to reality. Christianity is uniquely verifiable on the historical resurrection of Jesus. If that happened, Jesus\' exclusive claims are vindicated. If it didn\'t, Christianity is false. The exclusivity is not arbitrary; it is historical.' },
+    ],
+  },
+  {
+    id: 'sexuality',
+    name: 'Christian Sexual Ethics are Repressive',
+    preview: 'Sex outside marriage, homosexuality, contraception — why all the rules?',
+    objection: {
+      text: 'Christian sexual ethics are anti-pleasure, anti-body, and anti-human-flourishing. The prohibitions on premarital sex, same-sex relationships, and other expressions of human sexuality cause needless guilt and shame. Sexually-liberated societies have happier individuals, fewer hangups. Christianity is on the wrong side of history on every sexual issue.',
+      who: 'Modern progressive ethics, secular humanism',
+    },
+    scripture: '1 Corinthians 6:18-20 · Genesis 1:27, 2:24 · Romans 1:24-27 · Matthew 19:4-6',
+    responses: [
+      { author: 'Tim Keller (The Meaning of Marriage)', text: 'The Christian view is not anti-sex but anti-sex-without-covenant. Christianity has the HIGHEST view of sex of any religion or philosophy — it is the sacramental expression of total self-giving between two becoming-one persons. The sexual revolution did not liberate sex; it cheapened it. The rise in loneliness, broken families, sexual trauma, and dissatisfaction tracks with the loosening of the sexual ethic, not against it. The traditional Christian sexual ethic is harder, but it serves human flourishing.' },
+      { author: 'C.S. Lewis (Mere Christianity)', text: 'You can get a large audience to a sex strip-tease by simply uncovering bits of a woman\'s body. Would anyone suppose people in the country were unusually sex-starved? You\'d think they had a fairly normal interest if uncovered food on a plate had the same effect. The modern sexual obsession is not evidence of healthy desire — it is evidence of damaged desire. Restraint is not repression; it is the price of being able to experience sex as the deepest gift instead of the cheapest commodity.' },
+      { author: 'Christopher West (paraphrasing John Paul II, Theology of the Body)', text: 'The body has a language. The marital embrace says "I give you all of me, irrevocably, fruitfully." Casual sex says that with the body while withholding it with the will. This is a lie spoken with the body. The Christian sexual ethic is not "don\'t enjoy your body" — it is "let your body tell the truth." Sex is meant to be the celebration of a permanent gift, not the negotiation of a temporary exchange.' },
+      { author: 'Sam Allberry (same-sex attracted Christian)', text: 'I experience same-sex attraction and have chosen celibate Christian commitment because I am convinced Jesus is more compelling than my sexuality. Christianity offers something the world cannot — friendship without sex, intimacy without erotic expression, identity grounded in something other than sexual orientation. The cross calls every Christian to die to something; for some it is straight desire, for some it is gay desire, for some it is greed or pride. The denial of self is the cost of following Christ, not a unique burden imposed on LGBT people.' },
+    ],
+  },
+  {
     id: 'bible-reliability',
     name: 'The Bible Has Been Changed Over Time',
     preview: 'How do we trust documents copied for 2000 years?',
@@ -437,188 +570,11 @@ const TOPICS = [
       text: 'The Bible has been copied and re-copied for two thousand years, translated through Hebrew, Aramaic, Greek, Latin, into English. We do not have original autographs. Scribes added, removed, and corrupted texts (Mark 16:9-20, John 7:53-8:11, etc). Comparing manuscript variants shows tens of thousands of differences. How can you trust any of this?',
       who: 'Bart Ehrman (Misquoting Jesus), Dan Brown\'s influence',
     },
-    scripture: '2 Timothy 3:16 · Matthew 24:35 · Psalm 119:89',
+    scripture: '2 Timothy 3:16 · Isaiah 40:8 · Matthew 5:18',
     responses: [
-      { author: 'Daniel Wallace (Center for the Study of New Testament Manuscripts)', text: 'The NT has 5,800+ Greek manuscripts and 10,000+ Latin plus thousands more in other ancient languages. Compare to Homer\'s Iliad (~600 manuscripts, none within 1,000 years of original). The "400,000 variants" figure is technically true but misleading: 99% are spelling/word-order variants that do not affect meaning. Variants that are both viable and meaningful are less than 1%. NO Christian doctrine depends on a disputed text. We can reconstruct the original text with extreme confidence.' },
-      { author: 'F.F. Bruce', text: 'The interval between original composition and earliest surviving manuscripts is unusually short for the NT (P52 papyrus dates to ~125 AD, ~25 years after John). For the OT, the Dead Sea Scrolls (mid-2nd century BC) match the Masoretic text (10th century AD) at over 95% letter-by-letter for Isaiah. Scribes had powerful incentives to preserve, not innovate. The Bible is the most rigorously preserved ancient document in human history.' },
-      { author: 'Sean McDowell', text: 'The honest discussion of variants is actually a Christian strength, not a weakness. Christians are willing to publish their textual apparatuses in the margins of their Bibles — go look at any modern translation\'s footnotes. We have nothing to hide. Other religious texts (Quran) suppressed their variants. We disclose them, and the disclosure shows that the variants do not change Christian doctrine.' },
-      { author: 'Tim Keller (paraphrased)', text: 'The Bible\'s claim is not "we have perfect copies." The claim is that God preserved His word sufficiently for the church to know Him through it. The textual criticism scholarship of the last 200 years has, on balance, increased our confidence — the more manuscripts we find, the more the Christian doctrine of preservation looks defensible. The objection rests on a higher epistemic standard than we apply to any ancient document.' },
-    ],
-  },
-  {
-    id: 'free-will',
-    name: 'Free Will and Predestination',
-    preview: 'How can you choose freely if God knows everything?',
-    objection: {
-      text: 'If God is omniscient and knew before time how every choice would unfold, then no one is actually free. Foreknowledge is the same as determination — the future is fixed from God\'s vantage point. Calling that "free will" is just calling determinism by a different name. And if God predestined some to salvation and others to damnation (Romans 9), He created people knowing they would go to hell. That is monstrous.',
-      who: 'philosophical determinists, Calvinism critics',
-    },
-    scripture: 'Romans 9:14-24 · Ephesians 1:4-5 · Deuteronomy 30:19 · Joshua 24:15 · 2 Peter 3:9',
-    responses: [
-      { author: 'Molinism / William Lane Craig (middle knowledge)', text: 'Distinguish three kinds of divine knowledge: natural (what is necessarily true), middle (what every creature WOULD freely do in every possible circumstance), and free (what God determines to actualize). With middle knowledge, God can foreknow free choices without causing them. He chooses to instantiate the world in which the most people freely choose Him. Sovereignty + libertarian freedom are not contradictory; they cooperate through middle knowledge.' },
-      { author: 'C.S. Lewis (Mere Christianity)', text: 'God exists outside of time. From the eternal viewpoint, "before" and "after" do not apply to God\'s perception in the way they apply to ours. He does not "see ahead" because there is no "ahead" for Him. He sees all of time in one eternal present. So foreknowledge is not pre-knowledge that constrains future choices; it is direct perception of choices being freely made.' },
-      { author: 'Roger Olson (Arminian Theology)', text: 'Romans 9 is not about individual salvation but about God\'s sovereignty over nations and the means of redemption (Jacob/Esau as nations, Pharaoh as type). Read in context with Romans 10 ("whosoever calls on the Lord shall be saved") and Romans 11 (Israel\'s eventual restoration), Paul is defending God\'s plan to include Gentiles, not predetermining individuals to hell. Free response to genuine offer is the consistent NT pattern.' },
-      { author: 'N.T. Wright', text: '"Predestination" in Paul is about God\'s prior commitment to have a people-in-Christ, not a divine raffle deciding individual fates. The "elect" in Scripture is corporate (Israel; the church) before it is individual. Wesleyan / Arminian / Eastern Orthodox readings of these texts have always existed alongside Calvinist ones. The objection treats one reading as definitionally Christian; it is not.' },
-    ],
-  },
-  {
-    id: 'amputees',
-    name: 'Why Doesn\'t God Heal Amputees?',
-    preview: 'The selective-miracle problem — popular skeptic challenge.',
-    objection: {
-      text: 'God supposedly answers prayer and heals people of cancer, addiction, depression. Yet no documented case exists of God regrowing a limb on an amputee. The pattern of "healings" perfectly matches conditions that have natural variation, placebo response, and confirmation bias. If God were real, we would see one verified amputee healed. We do not. The selective non-healing reveals what is actually going on: nothing supernatural.',
-      who: 'whydoesntgodhealamputees.com (Marshall Brain), popular new atheist talking point',
-    },
-    scripture: 'John 9 · 2 Corinthians 12:7-10 · Job 1-2 · Luke 4:25-27',
-    responses: [
-      { author: 'C.S. Lewis (Miracles)', text: 'The question assumes that miracles are God\'s primary mode of relating to the world. They are not. Miracles are signposts, not the road. Scripture portrays God as ordinarily working through natural processes; miracles are punctuations, not the prose. The expectation "God should heal every amputee or none" misreads the Christian doctrine of providence. God uses ordinary medicine, prosthetics, and human ingenuity — these are not opposed to His care; they ARE His care.' },
-      { author: 'Craig Keener (Miracles, 2 vol.)', text: 'There are actually documented, medically attested cases of dramatic healings including regrown tissue, restored sight, and people coming back from clinical death — most reported from the Global South where missionary medicine is sparse. Western skepticism filters them out. The amputee challenge cherry-picks one condition while ignoring the vast literature on testable healing claims. The empirical question is not as one-sided as the slogan suggests.' },
-      { author: 'Paul (2 Corinthians 12:7-10)', text: 'Paul himself prayed three times for his "thorn in the flesh" to be removed. God refused: "My grace is sufficient for you, for my power is made perfect in weakness." The biblical pattern is not "God heals everyone who asks rightly." The biblical pattern is "God meets His people in suffering, sometimes through healing, sometimes through endurance — and the second is no less His grace than the first."' },
-      { author: 'Tim Keller', text: 'The question is also a category error. It treats miracles as a vending machine: insert prayer, expect output. The Christian view: prayer is relational submission to the One who knows what we need, not a mechanism we control. The God who promised to wipe every tear (Revelation 21:4) is not denying healing; He is timing it. Final healing is the resurrection of the body. Until then, partial healings are tokens, not totals.' },
-    ],
-  },
-  {
-    id: 'ot-violence',
-    name: 'Old Testament Violence and Conquest',
-    preview: 'Did God really command genocide?',
-    objection: {
-      text: 'The OT explicitly commands the Israelites to wipe out entire peoples — men, women, children, livestock (Deuteronomy 7, 1 Samuel 15). Christians today rightly condemn genocide as a war crime. How can the same God who is "love" command what we would prosecute as ethnic cleansing? Either God is morally inconsistent, or the OT is not actually from God.',
-      who: 'Richard Dawkins (The God Delusion), New Atheists',
-    },
-    scripture: 'Deuteronomy 7 · 1 Samuel 15 · Genesis 15:16 · Joshua 2 (Rahab)',
-    responses: [
-      { author: 'Paul Copan (Is God a Moral Monster?)', text: 'The Hebrew conquest narratives use Ancient Near Eastern hyperbole conventions ("utterly destroy," "left no survivors") found in Egyptian, Hittite, and Assyrian war literature for what archaeology shows were dispossession campaigns, not actual extermination. Joshua claims to wipe out Canaanites that Judges 1 then describes as still alive in the same cities. The texts are functioning rhetorically, not as literal body counts. This does not solve every problem but reframes the debate.' },
-      { author: 'C.S. Lewis (correspondence)', text: 'The OT depicts a specific historical episode in God\'s pedagogy of a specific people in a specific cultural moment. Christians have never used the conquest as a template for Christian ethics — the NT explicitly redirects the people of God from territorial conquest to evangelism. The atheist objection often implicitly demands that Christianity affirm modern liberal pacifism in every era of Scripture, then accuses it of failing the test.' },
-      { author: 'Tim Keller', text: 'Two further considerations. First, the Canaanites were committing child sacrifice and ritual prostitution; the conquest is portrayed as judgment of a specific corrupt civilization, not racial cleansing. Genesis 15:16 has God WAITING centuries for "the iniquity of the Amorites" to reach its full extent — patience, not haste. Second, the rescue of Rahab (Joshua 2) shows that anyone who turned to YHWH was spared — the line was theological, not ethnic. Imperfect parallels but the picture is not what the slogan suggests.' },
-      { author: 'Christopher Wright (The God I Don\'t Understand)', text: 'I do not have a tidy answer that makes the conquest texts comfortable. Honesty about the difficulty is part of taking Scripture seriously. What I CAN say: (1) the conquest is presented as unique, not normative; (2) God is depicted as the ultimate judge of every nation, including Israel itself in the exile; (3) the cross stands as the place where God absorbed judgment into Himself rather than dispensing it. The trajectory of biblical revelation moves toward that cross, not away from it.' },
-    ],
-  },
-  {
-    id: 'blind-faith',
-    name: 'Faith is Believing Without Evidence',
-    preview: 'Faith vs. reason — the supposed conflict.',
-    objection: {
-      text: 'Faith, by definition, is belief without evidence. Hebrews 11:1 says faith is "the substance of things hoped for, the evidence of things not seen." That is the dictionary definition of credulity. Reasonable people require evidence proportional to claims. The "faith" Christianity asks for is the abandonment of rationality. If you have to BELIEVE, you do not KNOW.',
-      who: 'Richard Dawkins, Sam Harris, popular memes',
-    },
-    scripture: 'Hebrews 11:1 · Luke 1:1-4 · 1 Peter 3:15 · Acts 1:3',
-    responses: [
-      { author: 'C.S. Lewis (Mere Christianity)', text: 'Faith in the Christian sense is not believing what you know is not true. Faith is the art of holding on to things your reason has once accepted, in spite of your changing moods. The captain who, having been convinced by evidence and reasoning that the ship is seaworthy, must then maintain that conviction when the storm gives him a panic — that is faith. Faith follows evidence; it does not replace it.' },
-      { author: 'William Lane Craig (Reasonable Faith)', text: 'The objection equivocates on "faith." There is a Christian sense (pistis: trust based on reasons) and a popular caricature sense (credulity in defiance of reasons). Hebrews 11:1 in the original Greek means "assurance" and "conviction" — confident knowledge, not wishful blindness. The chapter then proceeds to list people who acted on EVIDENCE of God\'s past faithfulness (Abraham\'s descendants, the exodus). Faith is reasoned trust, not the opposite of reason.' },
-      { author: 'John Lennox', text: 'I have faith in my wife. That faith is not blind — it is grounded in 50 years of evidence about her character. If "faith means belief without evidence," then we have faith in nothing — not in our doctors, our parents, our colleagues, our governments. The objection makes Christianity uniquely irrational by redefining a word the rest of language uses sensibly. Christians have a great deal of evidence and proportional confidence based on it.' },
-      { author: 'Sean McDowell', text: 'Luke opens his Gospel: "It seemed good also to me to write an orderly account... so that you may know the certainty of the things you have been taught." (Luke 1:3-4) The earliest Christian writers explicitly framed their work as evidence-based investigation. Acts 1:3 says Jesus "presented himself to them and gave many convincing proofs that he was alive." Christianity is the religion that DEMANDS investigation, not the one that forbids it.' },
-    ],
-  },
-  {
-    id: 'colonial',
-    name: 'Christianity is a Western Colonial Religion',
-    preview: 'White European faith imposed by violence on the rest of the world.',
-    objection: {
-      text: 'Christianity arrived in Africa, Asia, and the Americas on the boats of colonizers. Missionaries collaborated with empire to suppress local religions and cultures. Today, embracing Christianity in formerly colonized regions is embracing the religion of your colonizer. The genuinely decolonized stance is to return to indigenous spirituality. Christianity is a tool of cultural imperialism, not a universal truth.',
-      who: 'Postcolonial critics, popular university discourse',
-    },
-    scripture: 'Acts 8:26-39 (Ethiopian eunuch) · Acts 2 (Pentecost) · Revelation 7:9',
-    responses: [
-      { author: 'Lamin Sanneh (Translating the Message)', text: 'Christianity is the most translatable religion in human history — Scripture exists in 3,000+ languages, and translation is a CORE practice. This is the opposite of cultural imperialism. The missionary tradition that learned local languages, transcribed oral cultures, and built indigenous churches preserved more African and Asian languages than any other force. Where Christianity went, vernacular literacy followed. That is not colonization; that is amplification of the local.' },
-      { author: 'Vince Bantu (A Multitude of All Peoples)', text: 'Christianity is not a Western religion. It started in the Middle East, took deep root in Africa (Ethiopia, Egypt, Nubia) and Asia (Mesopotamia, India, China) BEFORE it ever became dominant in Europe. The earliest centers of Christian theology were in Antioch and Alexandria. The Mar Thoma church in India dates to the 1st century. The Ethiopian church predates most of European Christianity. The "Christianity is white" framing is historically illiterate.' },
-      { author: 'Tim Keller', text: 'Some missionaries collaborated with empire; many resisted it (William Wilberforce, John Newton, Bartolomé de las Casas, the Korean Christian independence movement against Japanese occupation, the Black church in the American civil rights movement). Christianity\'s actual track record is mixed. But the gospel itself — that every human bears the image of God, that there is no Jew or Greek, slave or free — is the foundation for the very critique of colonialism the objector is making. Without it, "human dignity" is harder to ground.' },
-      { author: 'Esau McCaulley (Reading While Black)', text: 'The Black church in America took the religion of slavers and read the Bible against the grain of their masters\' interpretation, finding in the Exodus, the prophets, and Jesus a liberating word that exposed the masters\' Christianity as a betrayal of itself. The same dynamic plays out in Latin American liberation theology, African theology, and the Global South Christianity that is now numerically dominant. The objection treats Christianity as static; in reality, indigenous Christians have made it their own and used it against the imperial distortion.' },
-    ],
-  },
-  {
-    id: 'sexuality',
-    name: 'Sexual Ethics and the Body',
-    preview: 'Why does Christianity care so much about what people do in private?',
-    objection: {
-      text: 'Christian sexual ethics — no sex before marriage, marriage between one man and one woman, no same-sex relationships — are oppressive remnants of a bronze-age morality. Modern people understand that consenting adults should be free to express love however they choose. Christian sexual ethics cause demonstrable harm (LGBT+ depression rates, suicide, shame culture). Why should anyone live by it?',
-      who: 'progressive secular critics, ex-vangelicals',
-    },
-    scripture: 'Genesis 1:27 · 1 Corinthians 6:18-20 · Matthew 19:4-6 · Romans 1:24-27 · Hebrews 13:4',
-    responses: [
-      { author: 'Christopher West (Theology of the Body, popularizer of John Paul II)', text: 'Christian sexual ethics begin with the body as theology — Genesis 1:27 says we are made male and female in God\'s image, and the union of two complementary bodies is itself a parable of God\'s self-giving love. The objection assumes sexual ethics are arbitrary rules to suppress pleasure. The Christian claim is the opposite: sexuality is so SIGNIFICANT, so iconographic of divine love, that misusing it does real metaphysical damage. The discipline is the protection.' },
-      { author: 'Tim Keller', text: 'Every culture in human history has had sexual restrictions; the modern West\'s restrictions are not LESS, they are different (consent + cultural taboo). The "consenting adults" frame is a modern moral construction, not a self-evident truth. It also fails its own tests — adultery between consenting adults wrecks third parties. Christian sexual ethics center on covenant fidelity, which is what every successful long-term relationship in any culture also requires, dressed in different language.' },
-      { author: 'Wesley Hill (Washed and Waiting, Spiritual Friendship)', text: 'I am a celibate gay Christian. The cost is real; I do not minimize it. The traditional Christian sexual ethic is hard. It is also the only ethic that takes my body seriously as a body that means something theologically. The progressive alternative tells me my body is morally neutral matter to be deployed according to my desires. The orthodox tradition tells me my body is iconographic — even when that is painful. I have chosen the harder, weightier word.' },
-      { author: 'Sam Allberry (Is God Anti-Gay?)', text: 'Christianity is not anti-gay; it is anti-everyone-doing-what-they-want-with-sex. Heterosexuals who sleep around, who divorce because they fell out of love, who use porn, who lust — Jesus condemns ALL of it (Matthew 5:27-28). The reason same-sex relationships specifically come up: because they are the modern case Christians are pressured to bless. The actual ethic — "your body belongs to Christ" — is universal. Anyone, of any orientation, can live faithfully within it.' },
-    ],
-  },
-  {
-    id: 'church-hurt',
-    name: 'But Church Hurt is Real',
-    preview: 'Christians do real damage. Isn\'t the institution the problem?',
-    objection: {
-      text: 'I was raised in the church. The pastor who preached purity slept with the youth pastor. The leadership covered for an abuser. The "loving community" turned on me when I asked hard questions. The Crusades. Inquisition. Sex abuse cover-ups. Magdalene laundries. Boarding schools. The institutional church has done as much harm as good — maybe more. I will keep Jesus, but I am out on church.',
-      who: 'deconstruction movement, ex-vangelicals, Christian abuse survivors',
-    },
-    scripture: 'Matthew 23 · 1 Corinthians 5:11-13 · Galatians 6:1-2 · Romans 12:9 · 1 John 4:20',
-    responses: [
-      { author: 'Tim Keller (paraphrased)', text: 'Jesus saved His sharpest rebukes for religious leaders, not for the irreligious. Matthew 23 is the original anti-clergy sermon — by the founder of the religion. The fact that you can name what is wrong with the church BY APPEALING TO CHRISTIAN STANDARDS is itself evidence the gospel is alive: it has handed you the conviction tools you are using against its institutions. Walk into a Hindu, Muslim, or secular setting and the same complaint sounds different — because Christianity baked self-criticism into its DNA.' },
-      { author: 'Esau McCaulley', text: 'The Black church in America preserved the gospel WHILE under the boot of white Christian abusers. They knew the difference between Christ and His abusers. The deconstruction question "should I leave the institution?" is downstream of the question "do I have eyes to see who the abusers actually are and whom they have stolen Jesus from?" The Christian intellectual tradition has resources for being inside the church AND prophetically against it — both at once.' },
-      { author: 'Beth Allison Barr (The Making of Biblical Womanhood)', text: 'Church hurt is a category Scripture takes seriously (1 Corinthians 5, Matthew 18, James 5). The biblical pattern is not to deny abuse, defend the institution, or quietly leave — it is to confront, expose, restore where possible, and remove where not. The institutional cover-up is the betrayal. The biblical process is the corrective. Leaving the church often means losing the very tools the church gave you to expose what was wrong with it.' },
-      { author: 'C.S. Lewis (paraphrased correspondence)', text: 'A man who has been beaten by a doctor does not therefore conclude that medicine is false. He concludes that the doctor was a bad doctor. The church\'s bad doctors are the most damning evidence FOR Christianity — because Christianity insists they are bad doctors, and gives you the standards by which to judge them. The atheist has no standard by which to judge a religious abuser higher than any other con artist.' },
-    ],
-  },
-  {
-    id: 'meaning',
-    name: 'You Don\'t Need God for Meaning',
-    preview: 'I find plenty of meaning without religion.',
-    objection: {
-      text: 'I find deep meaning in my work, family, art, friendships, projects. I do not need God to give me purpose. The "without God, life is meaningless" framing is religious propaganda — secular people clearly live meaningful lives. Many of the happiest, most fulfilled people I know are atheists. The argument from meaning is just emotional manipulation.',
-      who: 'secular humanists, Sam Harris',
-    },
-    scripture: 'Ecclesiastes 1:2 · John 10:10 · Colossians 1:16-17',
-    responses: [
-      { author: 'Viktor Frankl (Man\'s Search for Meaning)', text: 'I survived four concentration camps. The people who survived were not the strong, the well-connected, or the lucky. They were the ones who had something — usually someone — to live FOR. Meaning is not optional; it is biological survival equipment. The atheist who finds meaning in family, work, and art is right that meaning is available — but the atheist worldview is poorer at GROUNDING that meaning when family, work, and art are stripped away. Christianity claims a meaning that survives the camp.' },
-      { author: 'C.S. Lewis (The Weight of Glory)', text: 'The atheist objection ignores the kind of meaning Christianity claims. "Meaning" in everyday usage means "this gives me satisfaction." "Meaning" in Christian usage means "this is metaphysically anchored — the universe itself notices and weighs it." A secular person can find subjective meaning everywhere. The question is whether the universe shares their evaluation. Christianity claims that yes, it does, because the universe is personal. The objection rests on a different kind of meaning altogether.' },
-      { author: 'Jordan Peterson', text: 'The hierarchical structure of meaning is most coherent within the Judeo-Christian tradition. Modern secular meaning is borrowed capital from religious meaning — and the loans are coming due. Watch what happens to secular people\'s meaning when serious suffering arrives. Many discover their "meaning" was situational, not load-bearing. The Christian claim is that meaning has to be cross-shaped — willing to suffer for what is true — and that this kind of meaning is what makes life livable in the worst circumstances.' },
-      { author: 'Tim Keller', text: 'The objection often slides between two things. "I find meaning without God" can be true psychologically — humans are meaning-making creatures regardless of belief. But "meaning exists without God" is a metaphysical claim about whether anything actually matters cosmically. Secular philosophy struggles with the second question (Nietzsche, Camus, the existentialists all grappled with this). Christianity says: meaning is not a thing you make; it is a thing you discover. Either it is woven into reality or it is not.' },
-    ],
-  },
-  {
-    id: 'doubt',
-    name: 'Doubt Means You Don\'t Really Believe',
-    preview: 'Real Christians have certainty. If you doubt, you\'re not one of us.',
-    objection: {
-      text: 'Christian culture treats doubt as a sign of weak faith or even rebellion. "Just pray it away." "Read your Bible more." "Real Christians don\'t doubt — they trust." The implicit message: doubt = exit from the community. So thinking Christians leave the faith when they hit honest questions, because the church has no place for them. The fault is not the doubt; the fault is the culture.',
-      who: 'deconstruction movement, thoughtful Christians who feel pushed out',
-    },
-    scripture: 'Mark 9:24 · Matthew 11:2-6 · Psalm 13 · Habakkuk 1 · John 20:24-29',
-    responses: [
-      { author: 'John Mark Comer / Tim Keller', text: '"I believe; help my unbelief" (Mark 9:24) is the most honest prayer in Scripture, and Jesus does not rebuke it — He honors it. John the Baptist sent disciples from prison asking "are you really the one?" Jesus did not say "what a disappointing question." He sent back evidence. The psalter is half lament. Habakkuk yells at God. Thomas demands proof. The biblical tradition treats doubt as a normal feature of mature faith, not a disqualification. The cultural pressure to perform certainty is anti-biblical.' },
-      { author: 'Anne Lamott', text: 'The opposite of faith is not doubt; the opposite of faith is certainty. Certainty is closed; faith is open. Doubt is the soil where real trust grows. People who never doubt have never engaged the cost of belief.' },
-      { author: 'C.S. Lewis (correspondence; A Grief Observed)', text: 'After my wife died, I doubted everything. I did not stop being a Christian during that period; I started being an honest one. Christianity that has never been broken by real suffering is not yet adult. The believer who has wrestled with God and emerged believing trusts differently — and more deeply — than the believer who was never tested. Read the Psalms. The psalmist is allowed to scream.' },
-      { author: 'Justin Brierley (Why I Still Believe)', text: 'After 20 years hosting debates between Christians and atheists, I have changed my mind several times about secondary questions but not the central claim. Christianity that survives doubt is not weaker; it has been weight-tested. Christians who say doubt is incompatible with faith have usually not been pressured by genuine evidence against their position. The faith that endures is the faith that knows the strongest objections — and remains.' },
-    ],
-  },
-  {
-    id: 'progress',
-    name: 'Christianity Will Be Obsolete Soon',
-    preview: 'Each generation is more secular than the last. The trajectory is clear.',
-    objection: {
-      text: 'In the West, religious affiliation is declining every decade. "Nones" — religiously unaffiliated — are now the largest demographic among young adults. The trajectory is obvious: as societies become more educated, prosperous, and scientifically literate, religion fades. Christianity in 100 years will be a historical curiosity, like belief in Zeus is today.',
-      who: 'New Atheist movement, secularization-thesis sociologists',
-    },
-    scripture: 'Matthew 16:18 · Acts 2:41-47 · 2 Timothy 4:3-4 · Revelation 7:9',
-    responses: [
-      { author: 'Philip Jenkins (The Next Christendom)', text: 'The "Christianity is declining" narrative is provincial Western reporting. Globally, Christianity is growing — the African church alone added 100+ million believers between 2000 and 2020. By 2050, the Christian population will be more African and Asian than European or American by a wide margin. What Western secularists call "decline" is actually a geographic shift in the center of gravity. The objection mistakes contraction in one zone for global collapse.' },
-      { author: 'Tom Holland (Dominion)', text: 'Most Western "post-Christianity" is actually Christianity\'s moral vocabulary deployed against its theological frame. Modern progressives appeal to human dignity, the inherent worth of marginalized people, forgiveness, mercy, equal worth of all persons — these are Christian inheritances. The secular West is not post-Christian; it is reflexively Christian without acknowledging the debt. Whether that vocabulary survives without its theological roots is the open question. History suggests it does not.' },
-      { author: 'Rodney Stark (The Triumph of Christianity)', text: 'Christianity has been "about to die" multiple times in 2000 years. Pliny declared paganism stable and Christianity a passing fad in 110 AD. Voltaire predicted Christianity dead within his lifetime — instead, Christianity grew. Marx predicted religion fading with economic progress — and the most religious country in the developed world is the most economically advanced (United States). The secularization thesis is empirically falsifying with every census in the Global South.' },
-      { author: 'Jesus (Matthew 16:18)', text: '"I will build my church, and the gates of hell shall not prevail against it." The Christian claim is not that any particular generation will see expansion in any particular region — Jesus warned otherwise (2 Timothy 4:3, falling away). The claim is that the church as a global, multi-millennial reality persists because God preserves it. Twenty centuries of attempted erasures (Roman persecution, Mongol invasion, Maoist purges, modern secularization) have produced a global church of 2.4 billion. The trend line is not what the objector thinks it is.' },
-    ],
-  },
-  {
-    id: 'exclusivity',
-    name: 'Christian Exclusivity is Arrogant',
-    preview: 'You are saying everyone in every other religion is wrong?',
-    objection: {
-      text: 'It is arrogant to claim that Christianity is THE truth and every other religion is false. With billions of sincere Muslims, Hindus, Buddhists, secular humanists, etc., how can one religion be uniquely correct? Religious exclusivity has caused enormous violence. The mature view is religious pluralism: all paths lead to the same mountaintop.',
-      who: 'John Hick, Stephen Prothero (less so), popular culture',
-    },
-    scripture: 'John 14:6 · Acts 4:12 · 1 Timothy 2:5',
-    responses: [
-      { author: 'Tim Keller (The Reason for God)', text: 'Pluralism is itself an exclusive claim. To say "no religion has the truth, they all just contain pieces of it" is itself a religious claim that contradicts what every major religion actually claims about itself. The pluralist accuses Christians of arrogance while making a more sweeping claim — that he sees the truth all the believers cannot see. The blind-men-and-elephant story requires someone (the storyteller) who CAN see the whole elephant. Pluralism is more arrogant, not less.' },
-      { author: 'C.S. Lewis (Mere Christianity)', text: 'If you are a Christian, you are free to believe that all other religions, even the queerest ones, contain at least some hint of the truth. When I was an atheist I had to try to persuade myself that most of the human race had always been wrong about the question that mattered most. The Christian is not committed to believing that all other religions are simply wrong all through. The Muslim affirmation of God\'s sovereignty, the Hindu intuition of the divine, the Buddhist diagnosis of human craving — Christians can affirm what is true in each while insisting that Jesus is the unique fulfillment.' },
-      { author: 'William Lane Craig', text: 'The exclusivity of Christianity is a logical entailment of its central claim: Jesus is uniquely God incarnate, uniquely raised, uniquely the propitiation for sin. If that is true, no other religion offers what Christianity offers. The proper response to this is not to soften the claim but to ask whether the claim is true. If it is, the exclusivity is not arrogant; it is just true. If it is false, then Christianity is false. There is no middle path that respects what Christianity actually says.' },
-      { author: 'Lesslie Newbigin (The Gospel in a Pluralist Society)', text: 'The pluralist is functioning as a missionary for a particular Enlightenment story about religion. He has not transcended exclusive truth-claims; he has just made a new one. The Christian story takes other religions seriously enough to engage them as actual rival accounts. Christ is announced not as one option in a market but as the Lord of all who is going to be ultimately recognized.' },
+      { author: 'Daniel Wallace (Center for the Study of NT Manuscripts)', text: 'The NT has ~5,800 Greek manuscripts (more than any other ancient document by orders of magnitude). The "variants" Ehrman emphasizes are overwhelmingly spelling, word-order, and minor copyist mistakes. Of the substantive variants, ZERO affect a major Christian doctrine. The opposite of what is claimed: the NT is the best-attested document of the ancient world. We can reconstruct the original wording to ~99% confidence.' },
+      { author: 'F.F. Bruce (NT Documents)', text: 'Compare manuscript evidence: Caesar\'s Gallic Wars (10 mss, earliest 900 years after composition). Tacitus (20 mss). Plato (7 mss). The NT (5,800+ Greek mss, earliest within 50-100 years of composition, fragmentary within 30 years). No classicist doubts we can reconstruct Caesar. The NT is in a different evidential category entirely.' },
+      { author: 'Craig Blomberg', text: 'The variants Ehrman highlights (Mark 16:9-20, John 7:53-8:11) are clearly marked in modern Bibles precisely because we KNOW they are later additions — which proves the manuscript tradition is transparent, not corrupt. The text criticism that identifies these passages is the same scholarship that gives us confidence about the rest of the text. The argument cuts the wrong way for the skeptic.' },
     ],
   },
 ];
@@ -638,8 +594,10 @@ function renderTopics() {
     const completed = !!s.revealed;
     return `
       <div class="topic-card ${completed ? 'completed' : ''}" onclick="openTopic('${t.id}')">
-        <div class="name ${completed ? 'completed' : ''}">${escapeHtml(t.name)}</div>
-        <div class="preview">${escapeHtml(t.preview)}</div>
+        <div class="content">
+          <div class="name ${completed ? 'completed' : ''}">${escapeHtml(t.name)}</div>
+          <div class="preview">${escapeHtml(t.preview)}</div>
+        </div>
         <div class="status">${completed ? '✓ revealed' : (s.answer ? 'in progress' : 'not started')}</div>
       </div>
     `;
@@ -655,25 +613,28 @@ window.openTopic = (id) => {
   detail.classList.add('active');
   const panel = document.getElementById('detail-panel');
   panel.innerHTML = `
-    <a class="back-link" onclick="closeTopic()">← back to topics</a>
+    <a class="back-link" onclick="closeTopic()">back to articles</a>
     <h2>${escapeHtml(t.name)}</h2>
     <div class="objection">
-      <div class="label">The strongest version of the objection</div>
+      <div class="label">The objection, steel-manned</div>
       <div class="text">${escapeHtml(t.objection.text)}</div>
-      <div class="who">— ${escapeHtml(t.objection.who)}</div>
+      <div class="who">${escapeHtml(t.objection.who)}</div>
     </div>
-    <label>Your response — write it BEFORE you reveal the experts</label>
+    <label>Your response · write it BEFORE you reveal the responses</label>
     <textarea id="my-answer" placeholder="What would you say if a thoughtful skeptic asked you this tonight? Don't reach for the answers; reach for your answer.">${escapeHtml(s.answer)}</textarea>
-    <div class="scripture-row"><strong>Relevant scripture:</strong> ${escapeHtml(t.scripture)}</div>
+    <div class="scripture-row"><strong>Relevant scripture</strong>${escapeHtml(t.scripture)}</div>
     <div class="row">
-      <button onclick="saveAnswer('${id}')">Save my answer</button>
-      <button class="ghost" onclick="reveal('${id}')">${s.revealed ? 'Show experts' : 'Reveal experts'}</button>
+      <button onclick="saveAnswer('${id}')">Save answer</button>
+      <button class="ghost" onclick="reveal('${id}')">${s.revealed ? 'Re-show responses' : 'Reveal responses'}</button>
     </div>
     <div id="responses-${id}" class="responses" style="display:${s.revealed ? 'block' : 'none'};">
       ${t.responses.map(r => `
         <div class="response">
-          <div class="author">${escapeHtml(r.author)}</div>
-          <div class="text">${escapeHtml(r.text)}</div>
+          <div class="meta"></div>
+          <div>
+            <div class="author">${escapeHtml(r.author)}</div>
+            <div class="text">${escapeHtml(r.text)}</div>
+          </div>
         </div>
       `).join('')}
     </div>
@@ -709,13 +670,13 @@ window.reveal = (id) => {
 function renderPractice() {
   const el = document.getElementById('practice-list');
   const written = TOPICS.filter(t => (state[t.id] || {}).answer).map(t => ({ topic: t, s: state[t.id] }));
-  if (!written.length) { el.innerHTML = '<div class="empty" style="color:var(--ink-faint);font-style:italic;padding:1.5rem 0;text-align:center;">Write some answers first.</div>'; return; }
+  if (!written.length) { el.innerHTML = '<div class="empty">Write some answers first.</div>'; return; }
   el.innerHTML = written.map(({ topic, s }) => `
-    <div style="padding:1.25rem 0;border-bottom:1px solid var(--border);">
-      <h2 style="font-family:var(--serif);color:var(--accent);font-size:1.05rem;margin-bottom:0.4rem;">${escapeHtml(topic.name)}</h2>
-      <div style="color:var(--ink-faint);font-size:0.78rem;margin-bottom:0.5rem;">saved ${new Date(s.savedAt || s.revealedAt).toLocaleDateString()} · ${s.revealed ? 'experts revealed' : 'not yet revealed'}</div>
-      <div style="font-family:var(--serif);color:var(--ink);white-space:pre-wrap;line-height:1.7;">${escapeHtml(s.answer)}</div>
-      <div style="margin-top:0.6rem;"><button onclick="openTopic('${topic.id}')" style="padding:0.35rem 0.8rem;font-size:0.8rem;">Return to topic</button></div>
+    <div>
+      <h2>${escapeHtml(topic.name)}</h2>
+      <div style="font-family:var(--mono);color:var(--ink-faint);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:14px;">saved ${new Date(s.savedAt || s.revealedAt).toLocaleDateString()} · ${s.revealed ? 'responses revealed' : 'not yet revealed'}</div>
+      <div style="font-family:var(--body);color:var(--ink);white-space:pre-wrap;line-height:1.7;font-size:16px;">${escapeHtml(s.answer)}</div>
+      <div style="margin-top:14px;"><button onclick="openTopic('${topic.id}')">Return to article</button></div>
     </div>
   `).join('');
 }

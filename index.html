@@ -18,7 +18,7 @@
     Objection presented as a formal block-quote with citation.
     User's response in a write-in field that looks like an
     examination booklet. Responses from authorities listed like
-    footnotes — name, affiliation, paraphrased argument.
+    footnotes, name, affiliation, paraphrased argument.
     NO italic-serif display, NO drop caps, NO cream paper.
     ============================================================ */
 
@@ -58,7 +58,7 @@ body{position:relative}
 }
 
 /* ============================================================
-   HEADER — academic journal masthead, two-column-ish
+   HEADER, academic journal masthead, two-column-ish
    ============================================================ */
 header{
   padding:48px 0 28px;
@@ -90,7 +90,7 @@ h1{
 .masthead-right .vol{display:block;margin-top:4px}
 
 /* ============================================================
-   TABS — pagination tabs, slab-serif
+   TABS, pagination tabs, slab-serif
    ============================================================ */
 .tabs{
   display:flex;justify-content:flex-start;gap:0;
@@ -116,7 +116,7 @@ h1{
 main{padding-bottom:80px}
 
 .panel{
-  /* Articles use no boxes — held together by sectioning */
+  /* Articles use no boxes, held together by sectioning */
   padding:24px 0 48px;
 }
 .panel h2{
@@ -135,7 +135,7 @@ main{padding-bottom:80px}
 }
 
 /* ============================================================
-   TOPIC INDEX — academic table of contents
+   TOPIC INDEX, academic table of contents
    ============================================================ */
 .topic-grid{
   display:flex;flex-direction:column;gap:0;
@@ -178,7 +178,7 @@ main{padding-bottom:80px}
 .topic-card.completed .status{color:var(--sage)}
 
 /* ============================================================
-   TOPIC DETAIL — full disputation article
+   TOPIC DETAIL, full disputation article
    ============================================================ */
 .topic-detail{display:none}
 .topic-detail.active{display:block}
@@ -199,7 +199,7 @@ main{padding-bottom:80px}
   border-bottom:2px solid var(--ink);
 }
 
-/* OBJECTION block — formal academic block-quote */
+/* OBJECTION block, formal academic block-quote */
 .objection{
   background:transparent;
   border:none;border-radius:0;
@@ -226,7 +226,7 @@ main{padding-bottom:80px}
   letter-spacing:0.16em;text-transform:uppercase;
   color:var(--ink-faint);margin-top:18px;
 }
-.objection .who::before{content:"— "}
+.objection .who::before{content:", "}
 
 /* FORMS */
 label{
@@ -274,7 +274,7 @@ button.ghost:hover{background:var(--ink-soft);color:var(--paper);border-color:va
   margin-right:10px;display:block;margin-bottom:4px;
 }
 
-/* RESPONSES — footnote-style citations */
+/* RESPONSES, footnote-style citations */
 .responses{
   margin-top:48px;padding-top:24px;
   border-top:2px solid var(--ink);
@@ -329,7 +329,7 @@ button.ghost:hover{background:var(--ink-soft);color:var(--paper);border-color:va
 }
 
 /* ============================================================
-   FOOTER — colophon / publication info
+   FOOTER, colophon / publication info
    ============================================================ */
 footer{
   text-align:left;margin-top:48px;padding:32px 0 56px;
@@ -373,7 +373,7 @@ footer a:hover{border-bottom-color:var(--sage)}
   <div class="masthead-left">
     <div class="journal-label">A Journal of Disputations</div>
     <h1>Counter</h1>
-    <p class="tagline">Be ready to give an answer (1 Peter 3:15) — but practice it before you need it. Each article presents the steel-manned objection, asks for <em>your</em> response, then publishes the responses of the authorities.</p>
+    <p class="tagline">Be ready to give an answer (1 Peter 3:15), but practice it before you need it. Each article presents the steel-manned objection, asks for <em>your</em> response, then publishes the responses of the authorities.</p>
   </div>
   <div class="masthead-right">
     <span class="issue">Vol. I · Issue I</span>
@@ -393,7 +393,7 @@ footer a:hover{border-bottom-color:var(--sage)}
   <div class="panel">
     <h2>Table of articles</h2>
     <p style="font-family:var(--body);color:var(--ink-soft);font-size:15px;line-height:1.55;margin:0 0 8px">Write your answer to each objection <em>before</em> consulting the responses below it. That is the muscle this drill builds.</p>
-    <div class="quote">Always be prepared to give an answer to everyone who asks you to give the reason for the hope that you have. But do this with gentleness and respect. — 1 Peter 3:15</div>
+    <div class="quote">Always be prepared to give an answer to everyone who asks you to give the reason for the hope that you have. But do this with gentleness and respect., 1 Peter 3:15</div>
     <div class="topic-grid" id="topic-grid"></div>
   </div>
 </div>
@@ -426,7 +426,7 @@ footer a:hover{border-bottom-color:var(--sage)}
 <footer>
   <p>Topics drawn from common objections in modern apologetics literature. Responses paraphrase, not quote.<br>
   <a href="https://github.com/thebigjah/counter">github.com/thebigjah/counter</a></p>
-  <div class="credit">— PURCELLVENTURES.CO —</div>
+  <div class="credit">, PURCELLVENTURES.CO,</div>
 </footer>
 
 </div>
@@ -448,7 +448,7 @@ const TOPICS = [
     scripture: 'Romans 8:18-28 · Job 38-41 · 2 Corinthians 4:17',
     responses: [
       { author: 'Alvin Plantinga (Free Will Defense)', text: 'A world with free creatures capable of moral good is more valuable than a world with no free creatures at all. God could not have created free creatures who always do good, because then they would not be free. Therefore the existence of moral evil is logically compatible with an all-good, all-powerful God who values genuine love over coerced compliance.' },
-      { author: 'C.S. Lewis (The Problem of Pain)', text: 'Pain is God\'s "megaphone to rouse a deaf world." A world without pain would be a world without growth, without sacrifice, without the cross. The objection assumes that physical comfort is the highest good — Christianity has always insisted that holiness, not comfort, is the goal. We complain that the Father did not make our nursery childproof. He intends to make us heirs.' },
+      { author: 'C.S. Lewis (The Problem of Pain)', text: 'Pain is God\'s "megaphone to rouse a deaf world." A world without pain would be a world without growth, without sacrifice, without the cross. The objection assumes that physical comfort is the highest good, Christianity has always insisted that holiness, not comfort, is the goal. We complain that the Father did not make our nursery childproof. He intends to make us heirs.' },
       { author: 'William Lane Craig', text: 'The atheist must show that it is logically impossible for God to have morally sufficient reasons for permitting the evil that exists. That is a burden no atheist has carried. Given our cognitive limitations, we are in no position to assess whether God has such reasons. Greater goods (the cross, soul-making, mature freedom) plausibly require permitted evil.' },
       { author: 'Tim Keller (Walking with God through Pain and Suffering)', text: 'The cross is the answer not to the philosophical problem of evil but to the existential one. The God of Christianity is not removed from suffering. He entered it. The question "where is God when I suffer?" has the answer "on the cross, suffering with you and for you." Christianity is the only worldview where the suffering of God is at the center.' },
     ],
@@ -464,9 +464,9 @@ const TOPICS = [
     scripture: 'Matthew 25:46 · 2 Thessalonians 1:9 · Revelation 14:11 · Romans 1:18-21',
     responses: [
       { author: 'C.S. Lewis (The Great Divorce, The Problem of Pain)', text: 'The doors of hell are locked from the inside. Hell is not God dragging unwilling people to torment; it is God respecting the choice of people who, for all eternity, refuse Him. The damned are not victims of God\'s will but executors of their own. "There are only two kinds of people in the end: those who say to God, Thy will be done, and those to whom God says, Thy will be done."' },
-      { author: 'Tim Keller', text: 'The objection assumes hell is fundamentally punitive. Scripture and Christian thought present hell more often as the consequence of saying "no" to God across an entire life. People in hell do not want to be in heaven — heaven would be hell to them. The trajectory of a soul away from God can be permanent because we are not changeable infinitely; character calcifies. Hell is the freedom to be left alone forever.' },
-      { author: 'William Lane Craig', text: 'On the question of those who never heard: Scripture indicates God judges people based on the light they have (Romans 1, 2). Many evangelicals hold to "middle knowledge" — God knows what every person would do under every set of circumstances, so no one is damned merely for being born in the wrong place. The persistent rejecter of available light is who Scripture warns. Annihilationism is a legitimate evangelical option for those concerned about eternal duration.' },
-      { author: 'N.T. Wright', text: 'Modern hell-imagery comes more from Dante than Scripture. Biblical language about hell (Gehenna, the lake of fire) often uses image and warning. The deeper issue: when a person, made in God\'s image, chooses to dehumanize themselves by worshiping things less than God, they eventually become inhuman — no longer bearing the image — and pass into a state outside relationship with the source of life. That is hell. It is the natural outcome of unrepentant idolatry.' },
+      { author: 'Tim Keller', text: 'The objection assumes hell is fundamentally punitive. Scripture and Christian thought present hell more often as the consequence of saying "no" to God across an entire life. People in hell do not want to be in heaven, heaven would be hell to them. The trajectory of a soul away from God can be permanent because we are not changeable infinitely; character calcifies. Hell is the freedom to be left alone forever.' },
+      { author: 'William Lane Craig', text: 'On the question of those who never heard: Scripture indicates God judges people based on the light they have (Romans 1, 2). Many evangelicals hold to "middle knowledge", God knows what every person would do under every set of circumstances, so no one is damned merely for being born in the wrong place. The persistent rejecter of available light is who Scripture warns. Annihilationism is a legitimate evangelical option for those concerned about eternal duration.' },
+      { author: 'N.T. Wright', text: 'Modern hell-imagery comes more from Dante than Scripture. Biblical language about hell (Gehenna, the lake of fire) often uses image and warning. The deeper issue: when a person, made in God\'s image, chooses to dehumanize themselves by worshiping things less than God, they eventually become inhuman, no longer bearing the image, and pass into a state outside relationship with the source of life. That is hell. It is the natural outcome of unrepentant idolatry.' },
     ],
   },
   {
@@ -481,7 +481,7 @@ const TOPICS = [
     responses: [
       { author: 'William Lane Craig (4-fact case)', text: 'Four facts accepted by the majority of NT scholars (including non-Christian ones): (1) Jesus was buried by Joseph of Arimathea; (2) the tomb was found empty by women; (3) various individuals and groups had post-mortem appearances of Jesus; (4) the disciples suddenly came to believe he had risen, despite their predisposition against such a belief. The resurrection is the best explanation of these facts. Alternative explanations (theft, hallucination, swoon, legend) each have decisive problems.' },
       { author: 'N.T. Wright (Resurrection of the Son of God)', text: 'No first-century Jew expected a resurrection of a single individual in the middle of history. Jewish resurrection hope was corporate and end-of-history. Something happened in AD 30 in Jerusalem that caused thousands of Jews to invent a new category. Combined with the empty tomb and resurrection appearances reported across multiple independent traditions, the best historical hypothesis is that Jesus rose. Legend-development cannot explain the speed (Paul has the creed within ~5 years of the cross).' },
-      { author: 'Gary Habermas (Minimal Facts)', text: 'The 12+ apostles, James (Jesus\' skeptical brother), and Paul (a hostile persecutor) all came to believe Jesus rose. They were willing to die for this claim. Liars do not make martyrs — they die for what they sincerely believe. Independent attestations across the Gospels + 1 Corinthians 15 creed + extra-biblical hostile sources confirm the early belief. The hallucination hypothesis cannot account for group appearances or skeptic conversions.' },
+      { author: 'Gary Habermas (Minimal Facts)', text: 'The 12+ apostles, James (Jesus\' skeptical brother), and Paul (a hostile persecutor) all came to believe Jesus rose. They were willing to die for this claim. Liars do not make martyrs, they die for what they sincerely believe. Independent attestations across the Gospels + 1 Corinthians 15 creed + extra-biblical hostile sources confirm the early belief. The hallucination hypothesis cannot account for group appearances or skeptic conversions.' },
       { author: 'Sean McDowell (Fate of the Apostles)', text: 'The persecution and martyrdom of the apostles is well-attested. Peter and Paul died under Nero. James was stoned in Jerusalem. They did not gain wealth, power, or comfort for their claims. They had everything to lose by maintaining the resurrection story. The simplest explanation: they actually saw what they said they saw.' },
     ],
   },
@@ -495,8 +495,8 @@ const TOPICS = [
     },
     scripture: 'Matthew 28:19 · John 1:1-14 · 2 Corinthians 13:14 · Deuteronomy 6:4',
     responses: [
-      { author: 'C.S. Lewis (Mere Christianity)', text: 'A two-dimensional being asked to imagine a cube would say "you cannot have three squares occupying the same space — that is contradictory." But in three dimensions a cube has six square faces that are each independently real and all are the cube. Our problem with the Trinity may be that we are trying to do the math in a lower dimension than God exists in. The Trinity is the kind of thing nobody could have invented; it is more like something we discover.' },
-      { author: 'William Lane Craig', text: 'Distinguish person from being. There is one divine being (the divine essence, uncreated, eternal, omnipotent). Within that one being there are three persons — three centers of consciousness, three "I"s — who eternally relate to each other in love. This is not contradictory; it is a category of existence higher than mere oneness. Analogies fail (a triangle has three sides not three triangles; ice/water/vapor is modalism). The Trinity is sui generis but not incoherent.' },
+      { author: 'C.S. Lewis (Mere Christianity)', text: 'A two-dimensional being asked to imagine a cube would say "you cannot have three squares occupying the same space, that is contradictory." But in three dimensions a cube has six square faces that are each independently real and all are the cube. Our problem with the Trinity may be that we are trying to do the math in a lower dimension than God exists in. The Trinity is the kind of thing nobody could have invented; it is more like something we discover.' },
+      { author: 'William Lane Craig', text: 'Distinguish person from being. There is one divine being (the divine essence, uncreated, eternal, omnipotent). Within that one being there are three persons, three centers of consciousness, three "I"s, who eternally relate to each other in love. This is not contradictory; it is a category of existence higher than mere oneness. Analogies fail (a triangle has three sides not three triangles; ice/water/vapor is modalism). The Trinity is sui generis but not incoherent.' },
       { author: 'Tim Keller', text: 'The Trinity is the deepest answer to "what is the meaning of the universe?" If God is one isolated person, then before creation God was loneliness; love came after creation. But if God is eternal community (Father loving Son, Son loving Father, Spirit as the bond), then love is the deepest reality. Reality is not power, not survival, not chaos. Reality is mutual self-giving love. The Trinity is the only doctrine that makes "God is love" coherent eternally.' },
       { author: 'Athanasian Creed (4th-5th century)', text: 'The Father is God, the Son is God, the Holy Spirit is God, and yet there are not three Gods, but one God. Distinct in person, equal in glory, co-eternal in majesty. Not by confusion of substance, but by unity of person. This is the catholic faith.' },
     ],
@@ -506,14 +506,14 @@ const TOPICS = [
     name: 'Morality Doesn\'t Need God',
     preview: 'Secular ethics work fine. Why drag God into right and wrong?',
     objection: {
-      text: 'Atheists are demonstrably moral. Secular societies (Scandinavia) have lower crime, better social outcomes. Morality clearly comes from evolved social cooperation and rational reflection, not divine command. Christianity adds nothing — it just labels existing human intuitions as "from God." Plus, the Bible commands slavery and genocide, so Christianity has no monopoly on morality.',
+      text: 'Atheists are demonstrably moral. Secular societies (Scandinavia) have lower crime, better social outcomes. Morality clearly comes from evolved social cooperation and rational reflection, not divine command. Christianity adds nothing, it just labels existing human intuitions as "from God." Plus, the Bible commands slavery and genocide, so Christianity has no monopoly on morality.',
       who: 'Sam Harris, Christopher Hitchens, Richard Dawkins',
     },
     scripture: 'Romans 2:14-15 · Micah 6:8 · Matthew 22:37-40',
     responses: [
-      { author: 'C.S. Lewis (Mere Christianity)', text: 'Two things to notice. First, that there really is a moral law (we quarrel, we appeal to standards we expect the other person to share, we treat moral disagreement as if there is a right answer). Second, that we all fail to keep it. These two facts are the foundation of Christian thinking. The atheist who acts morally is borrowing capital from a worldview he denies — he behaves as if there are objective moral duties, but his metaphysics can only deliver subjective preferences.' },
+      { author: 'C.S. Lewis (Mere Christianity)', text: 'Two things to notice. First, that there really is a moral law (we quarrel, we appeal to standards we expect the other person to share, we treat moral disagreement as if there is a right answer). Second, that we all fail to keep it. These two facts are the foundation of Christian thinking. The atheist who acts morally is borrowing capital from a worldview he denies, he behaves as if there are objective moral duties, but his metaphysics can only deliver subjective preferences.' },
       { author: 'William Lane Craig (Moral Argument)', text: '(1) If God does not exist, objective moral values and duties do not exist. (2) Objective moral values and duties do exist. (3) Therefore God exists. The atheist usually concedes (2) (they say the Holocaust was REALLY wrong, not just culturally distasteful). They then need to explain how (1) is false. Evolutionary accounts explain why we feel moral; they do not explain why anything is actually morally true. The naturalist commits the is-ought fallacy.' },
-      { author: 'Tim Keller (The Reason for God)', text: 'On the OT slavery / genocide objection: read the OT laws comparatively. The OT regulated and humanized practices that pagan cultures took as unconstrained (debt-slavery limits, jubilee, prohibitions on harming foreign laborers). The conquest narratives are not Christian ethics — they are historical, time-bound, and the New Testament reframes the people of God as a non-territorial community. Christians have grounds within their own scripture for opposing all the things the critic opposes.' },
+      { author: 'Tim Keller (The Reason for God)', text: 'On the OT slavery / genocide objection: read the OT laws comparatively. The OT regulated and humanized practices that pagan cultures took as unconstrained (debt-slavery limits, jubilee, prohibitions on harming foreign laborers). The conquest narratives are not Christian ethics, they are historical, time-bound, and the New Testament reframes the people of God as a non-territorial community. Christians have grounds within their own scripture for opposing all the things the critic opposes.' },
       { author: 'Sean McDowell', text: 'The objection assumes Christianity needs to deliver moral knowledge that atheists cannot access. That is not the claim. Romans 1-2 says everyone has access to moral knowledge through conscience and creation. The Christian claim is about moral grounding (why is anything actually right or wrong?) and moral power (where does forgiveness for failure come from?). Atheists can recognize the moral law without being able to ground it or fulfill it.' },
     ],
   },
@@ -527,41 +527,41 @@ const TOPICS = [
     },
     scripture: 'Psalm 19:1 · Romans 1:20 · John 1:1-3',
     responses: [
-      { author: 'John Lennox', text: 'The conflict-thesis is bad history. The founders of modern science — Newton, Kepler, Galileo, Bacon, Faraday, Maxwell — were Christians who believed they were "thinking God\'s thoughts after Him." Science emerged in the Christian West because Christianity provided the metaphysical preconditions: a rational, contingent, intelligible universe created by a rational God. Atheist materialism makes scientific knowledge harder to justify, not easier (why trust evolved brains for abstract truth?).' },
+      { author: 'John Lennox', text: 'The conflict-thesis is bad history. The founders of modern science, Newton, Kepler, Galileo, Bacon, Faraday, Maxwell, were Christians who believed they were "thinking God\'s thoughts after Him." Science emerged in the Christian West because Christianity provided the metaphysical preconditions: a rational, contingent, intelligible universe created by a rational God. Atheist materialism makes scientific knowledge harder to justify, not easier (why trust evolved brains for abstract truth?).' },
       { author: 'C.S. Lewis (Miracles)', text: 'Science studies nature; it cannot, in principle, address whether anything exists beyond nature. Saying "science disproves God" is like saying "this fishing net only catches fish, therefore there are no whales." Science is brilliant at describing how the universe works; it is silent on why there is something rather than nothing, what consciousness is, why mathematical truths exist, and what moral duties bind us. These are not gaps science will fill; they are different kinds of questions.' },
-      { author: 'William Lane Craig (Kalam)', text: '(1) Whatever begins to exist has a cause. (2) The universe began to exist (Big Bang cosmology supports this — the past is finite). (3) Therefore the universe has a cause. That cause must be timeless, spaceless, immaterial, and unimaginably powerful — strikingly God-like. Modern cosmology has not undermined classical theistic arguments; it has made some of them more powerful than they were in the medieval period.' },
-      { author: 'Francis Collins (Director, NIH; The Language of God)', text: 'I led the Human Genome Project as a Christian, not despite being one. The DNA code, the fine-tuning of physical constants, and the existence of conscious moral beings are pointers to a Creator. Evolution describes mechanism, not meaning. Theistic evolution holds that God is the author of natural processes. There is no necessary conflict — only conflict between bad theology and bad science, both of which the Christian tradition has resources to correct.' },
+      { author: 'William Lane Craig (Kalam)', text: '(1) Whatever begins to exist has a cause. (2) The universe began to exist (Big Bang cosmology supports this, the past is finite). (3) Therefore the universe has a cause. That cause must be timeless, spaceless, immaterial, and unimaginably powerful, strikingly God-like. Modern cosmology has not undermined classical theistic arguments; it has made some of them more powerful than they were in the medieval period.' },
+      { author: 'Francis Collins (Director, NIH; The Language of God)', text: 'I led the Human Genome Project as a Christian, not despite being one. The DNA code, the fine-tuning of physical constants, and the existence of conscious moral beings are pointers to a Creator. Evolution describes mechanism, not meaning. Theistic evolution holds that God is the author of natural processes. There is no necessary conflict, only conflict between bad theology and bad science, both of which the Christian tradition has resources to correct.' },
     ],
   },
   {
     id: 'exclusivity',
-    name: 'Christianity is Arrogant — One True Way?',
+    name: 'Christianity is Arrogant, One True Way?',
     preview: 'How can one religion claim to be uniquely true?',
     objection: {
-      text: 'Christianity claims Jesus is "the way, the truth, and the life — no one comes to the Father except through me" (John 14:6). This is religious imperialism. Billions of sincere Hindus, Muslims, Buddhists, and Jews cannot all be wrong. The exclusivity of Christianity is what causes religious wars and intolerance. A loving God would have multiple paths.',
+      text: 'Christianity claims Jesus is "the way, the truth, and the life, no one comes to the Father except through me" (John 14:6). This is religious imperialism. Billions of sincere Hindus, Muslims, Buddhists, and Jews cannot all be wrong. The exclusivity of Christianity is what causes religious wars and intolerance. A loving God would have multiple paths.',
       who: 'John Hick, modern pluralists, multiculturalism',
     },
     scripture: 'John 14:6 · Acts 4:12 · 1 Timothy 2:5 · John 3:16',
     responses: [
-      { author: 'Tim Keller (The Reason for God)', text: 'The "all roads lead to God" position is itself an exclusive claim — it says all the religions making exclusive claims are wrong, and the pluralist is right. There is no view-from-nowhere. The question is not which view is exclusive (they all are) but which view best fits reality. Christianity makes the unique claim that humans cannot find God; God came to find us. This is not arrogance — it is the opposite. Other religions teach paths to climb; Christianity teaches that no one can climb, so the Climber came down.' },
+      { author: 'Tim Keller (The Reason for God)', text: 'The "all roads lead to God" position is itself an exclusive claim, it says all the religions making exclusive claims are wrong, and the pluralist is right. There is no view-from-nowhere. The question is not which view is exclusive (they all are) but which view best fits reality. Christianity makes the unique claim that humans cannot find God; God came to find us. This is not arrogance, it is the opposite. Other religions teach paths to climb; Christianity teaches that no one can climb, so the Climber came down.' },
       { author: 'C.S. Lewis (Mere Christianity)', text: 'If Christianity is true, then it is the most important truth. To be tolerant of error in the name of tolerance is to be cruel about the error. A man with cancer wants the diagnosis right, not multiple competing opinions all being treated as equally valid. If Jesus is who he said he is, the offer of salvation through him is not arrogance but the most generous offer in history.' },
-      { author: 'Ravi Zacharias', text: 'The major world religions contradict each other on the most basic claims — who God is, what humanity\'s problem is, what the solution is. They cannot all be true any more than 2+2 can equal 4 and 5 simultaneously. The question is which view corresponds to reality. Christianity is uniquely verifiable on the historical resurrection of Jesus. If that happened, Jesus\' exclusive claims are vindicated. If it didn\'t, Christianity is false. The exclusivity is not arbitrary; it is historical.' },
+      { author: 'Ravi Zacharias', text: 'The major world religions contradict each other on the most basic claims, who God is, what humanity\'s problem is, what the solution is. They cannot all be true any more than 2+2 can equal 4 and 5 simultaneously. The question is which view corresponds to reality. Christianity is uniquely verifiable on the historical resurrection of Jesus. If that happened, Jesus\' exclusive claims are vindicated. If it didn\'t, Christianity is false. The exclusivity is not arbitrary; it is historical.' },
     ],
   },
   {
     id: 'sexuality',
     name: 'Christian Sexual Ethics are Repressive',
-    preview: 'Sex outside marriage, homosexuality, contraception — why all the rules?',
+    preview: 'Sex outside marriage, homosexuality, contraception, why all the rules?',
     objection: {
       text: 'Christian sexual ethics are anti-pleasure, anti-body, and anti-human-flourishing. The prohibitions on premarital sex, same-sex relationships, and other expressions of human sexuality cause needless guilt and shame. Sexually-liberated societies have happier individuals, fewer hangups. Christianity is on the wrong side of history on every sexual issue.',
       who: 'Modern progressive ethics, secular humanism',
     },
     scripture: '1 Corinthians 6:18-20 · Genesis 1:27, 2:24 · Romans 1:24-27 · Matthew 19:4-6',
     responses: [
-      { author: 'Tim Keller (The Meaning of Marriage)', text: 'The Christian view is not anti-sex but anti-sex-without-covenant. Christianity has the HIGHEST view of sex of any religion or philosophy — it is the sacramental expression of total self-giving between two becoming-one persons. The sexual revolution did not liberate sex; it cheapened it. The rise in loneliness, broken families, sexual trauma, and dissatisfaction tracks with the loosening of the sexual ethic, not against it. The traditional Christian sexual ethic is harder, but it serves human flourishing.' },
-      { author: 'C.S. Lewis (Mere Christianity)', text: 'You can get a large audience to a sex strip-tease by simply uncovering bits of a woman\'s body. Would anyone suppose people in the country were unusually sex-starved? You\'d think they had a fairly normal interest if uncovered food on a plate had the same effect. The modern sexual obsession is not evidence of healthy desire — it is evidence of damaged desire. Restraint is not repression; it is the price of being able to experience sex as the deepest gift instead of the cheapest commodity.' },
-      { author: 'Christopher West (paraphrasing John Paul II, Theology of the Body)', text: 'The body has a language. The marital embrace says "I give you all of me, irrevocably, fruitfully." Casual sex says that with the body while withholding it with the will. This is a lie spoken with the body. The Christian sexual ethic is not "don\'t enjoy your body" — it is "let your body tell the truth." Sex is meant to be the celebration of a permanent gift, not the negotiation of a temporary exchange.' },
-      { author: 'Sam Allberry (same-sex attracted Christian)', text: 'I experience same-sex attraction and have chosen celibate Christian commitment because I am convinced Jesus is more compelling than my sexuality. Christianity offers something the world cannot — friendship without sex, intimacy without erotic expression, identity grounded in something other than sexual orientation. The cross calls every Christian to die to something; for some it is straight desire, for some it is gay desire, for some it is greed or pride. The denial of self is the cost of following Christ, not a unique burden imposed on LGBT people.' },
+      { author: 'Tim Keller (The Meaning of Marriage)', text: 'The Christian view is not anti-sex but anti-sex-without-covenant. Christianity has the HIGHEST view of sex of any religion or philosophy, it is the sacramental expression of total self-giving between two becoming-one persons. The sexual revolution did not liberate sex; it cheapened it. The rise in loneliness, broken families, sexual trauma, and dissatisfaction tracks with the loosening of the sexual ethic, not against it. The traditional Christian sexual ethic is harder, but it serves human flourishing.' },
+      { author: 'C.S. Lewis (Mere Christianity)', text: 'You can get a large audience to a sex strip-tease by simply uncovering bits of a woman\'s body. Would anyone suppose people in the country were unusually sex-starved? You\'d think they had a fairly normal interest if uncovered food on a plate had the same effect. The modern sexual obsession is not evidence of healthy desire, it is evidence of damaged desire. Restraint is not repression; it is the price of being able to experience sex as the deepest gift instead of the cheapest commodity.' },
+      { author: 'Christopher West (paraphrasing John Paul II, Theology of the Body)', text: 'The body has a language. The marital embrace says "I give you all of me, irrevocably, fruitfully." Casual sex says that with the body while withholding it with the will. This is a lie spoken with the body. The Christian sexual ethic is not "don\'t enjoy your body", it is "let your body tell the truth." Sex is meant to be the celebration of a permanent gift, not the negotiation of a temporary exchange.' },
+      { author: 'Sam Allberry (same-sex attracted Christian)', text: 'I experience same-sex attraction and have chosen celibate Christian commitment because I am convinced Jesus is more compelling than my sexuality. Christianity offers something the world cannot, friendship without sex, intimacy without erotic expression, identity grounded in something other than sexual orientation. The cross calls every Christian to die to something; for some it is straight desire, for some it is gay desire, for some it is greed or pride. The denial of self is the cost of following Christ, not a unique burden imposed on LGBT people.' },
     ],
   },
   {
@@ -576,7 +576,7 @@ const TOPICS = [
     responses: [
       { author: 'Daniel Wallace (Center for the Study of NT Manuscripts)', text: 'The NT has ~5,800 Greek manuscripts (more than any other ancient document by orders of magnitude). The "variants" Ehrman emphasizes are overwhelmingly spelling, word-order, and minor copyist mistakes. Of the substantive variants, ZERO affect a major Christian doctrine. The opposite of what is claimed: the NT is the best-attested document of the ancient world. We can reconstruct the original wording to ~99% confidence.' },
       { author: 'F.F. Bruce (NT Documents)', text: 'Compare manuscript evidence: Caesar\'s Gallic Wars (10 mss, earliest 900 years after composition). Tacitus (20 mss). Plato (7 mss). The NT (5,800+ Greek mss, earliest within 50-100 years of composition, fragmentary within 30 years). No classicist doubts we can reconstruct Caesar. The NT is in a different evidential category entirely.' },
-      { author: 'Craig Blomberg', text: 'The variants Ehrman highlights (Mark 16:9-20, John 7:53-8:11) are clearly marked in modern Bibles precisely because we KNOW they are later additions — which proves the manuscript tradition is transparent, not corrupt. The text criticism that identifies these passages is the same scholarship that gives us confidence about the rest of the text. The argument cuts the wrong way for the skeptic.' },
+      { author: 'Craig Blomberg', text: 'The variants Ehrman highlights (Mark 16:9-20, John 7:53-8:11) are clearly marked in modern Bibles precisely because we KNOW they are later additions, which proves the manuscript tradition is transparent, not corrupt. The text criticism that identifies these passages is the same scholarship that gives us confidence about the rest of the text. The argument cuts the wrong way for the skeptic.' },
     ],
   },
 ];
